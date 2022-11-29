@@ -1,0 +1,29 @@
+.board-preview{
+    border: 1px solid $BorderColor;
+    border-radius: 5px;
+    width: 285px;
+    padding: 8px;
+    &:hover{
+        background-color: #dcdfec;
+        cursor: pointer;
+    }
+    img{
+        border-radius: 4px;
+    }
+    .preview-text{
+        svg{
+            margin-inline-end: 0.4rem;
+        }
+        h4{
+            color: $Black;
+            margin: 0.3rem 0;
+        }
+        span{
+            font-size: 0.9rem;
+            color: #676879;
+        }
+        .favorite-icon{
+            font-size: 22px !important;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+@import './base.scss';
+@import './layout.scss';
+
+
+// VIEWS 
+@import './views/home-page.scss';
+@import './views/main-board.scss';
+@import './views/dash-board.scss';
+@import './views/board.scss';
+
+//CMPS
+@import './cmps/SideBar.scss';
+@import './cmps/board-list.scss';
+@import './cmps/board-preview.scss';
+@import './cmps/inbox.scss';
