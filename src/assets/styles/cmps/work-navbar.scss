@@ -1,0 +1,70 @@
+.work-navbar{
+    width: 290px;
+    height: 100vh;
+    background-color: #f6f7fb;
+    border-right: 1px solid $BorderColor;
+    padding: 1rem;
+    .title{
+        color: #676879;
+        font-size: 14px;
+    }
+    .top-items{
+        border-bottom: 1px solid $BorderColor;
+        margin-block-end: 1rem;
+        h3{
+            border: 1px solid black;
+            text-align: center;
+            padding: 5px;
+            margin-block-end: 1rem;
+        }
+        .btns-container{
+            padding-block-end:1.2rem;
+            button, input{
+                text-align: left;
+                background: transparent;
+                outline: 0;
+                border: 0;
+                height: 32px;
+            }
+            button, .input-wrapper{
+                width: 100%;
+                svg{
+                    font-size: 1.2rem;
+                    margin-inline-end: 0.5rem;
+                }
+                &:hover{
+                    background-color: #dcdfec;
+                    border-radius: 5px;
+                }
+            }
+            button{cursor: pointer;}
+            input{width: 80%;}
+        }
+    }
+    .boards-list{
+        max-height: 500px;
+        ul{
+            position: relative;
+            list-style: none;
+            li{
+                padding: 5px;
+                &:hover{
+                    background-color: #dcdfec;
+                    border-radius: 5px;
+                    .three-dots{display: inline;}
+                }
+                div{
+                    span{
+                        margin-inline-start: 0.5rem;
+                        font-size: 0.9rem;
+                        color: black;
+                    }
+                }
+                .three-dots{
+                    display: none;
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}

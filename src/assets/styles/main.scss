@@ -6,9 +6,11 @@
 @import './views/home-page.scss';
 @import './views/main-board.scss';
 @import './views/dash-board.scss';
-@import './views/board.scss';
+@import './views/work-management.scss';
 
 //CMPS
+@import './cmps/work-navbar.scss';
+@import './cmps/board.scss';
 @import './cmps/SideBar.scss';
 @import './cmps/board-list.scss';
 @import './cmps/board-preview.scss';

@@ -1,5 +1,4 @@
 import { asyncStorageService } from './async-storage.service.js'
-import { utilService } from './util.service.js'
 import boardsFile from '../Data/boards.json' assert {type: 'json'};
 
 export const boardService = {
