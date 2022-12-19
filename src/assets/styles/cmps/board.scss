@@ -4,6 +4,7 @@
     width: 100%;
     .top-section{
         width: 100%;
+        margin-block-end: 2rem;
         .top-l{
             width: 70%;
             h1{
@@ -21,5 +22,9 @@
             }
             svg{margin-inline-start: 1rem; font-size: 1.3rem;color: #676879 !important;cursor: pointer;}
         }
+    }
+    .main-board-section{
+        width: 100%;
+        min-height: 100%;
     }
 }

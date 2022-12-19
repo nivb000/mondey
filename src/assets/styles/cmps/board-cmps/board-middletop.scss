@@ -1,0 +1,17 @@
+.board-nav{
+    border-bottom: 1px solid $BorderColor;
+    margin-block-end: 1rem;
+    span{
+        padding-block-end: 0.3rem;
+        border-bottom: 2px solid blue;
+        letter-spacing: -0.3px;
+        svg{margin: 0 0.5rem;font-size: 0.8rem;}
+    }
+}
+
+.board-actions{
+    width: 40%;
+    height: 30px;
+    border: 1px solid red;
+    margin-block-end: 2.8rem;
+}

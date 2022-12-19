@@ -6,6 +6,9 @@ import { CiStar } from 'react-icons/ci'
 import { useDispatch } from "react-redux"
 import { updateBoard } from '../store/actions/board.action'
 import { useSelector } from "react-redux"
+import { BoardMiddleTop } from "./board-cmps/board-middletop"
+import { Group } from "./board-cmps/Group"
+
 
 export const Board = () => {
 
@@ -39,7 +42,7 @@ export const Board = () => {
   //TODO EXTRA: Maybe for every task <Task /> component
 
   return <section className="board">
-    <section className="top-section flex space-between">
+    <header className="top-section flex space-between">
       <div className="flex align-center top-l">
         <h1 contentEditable spellCheck={false} suppressContentEditableWarning={true} onBlur={handleTitleUpdate}>
           {board?.title}
@@ -47,12 +50,16 @@ export const Board = () => {
         <BiInfoCircle />
         <CiStar />
       </div>
-      <div className="flex align-center top-r">
+      <div className="flex align-center top-r"></div>
+    </header>
 
-      </div>
-    </section>
+
+    <BoardMiddleTop />
+
     <section className="main-board-section">
-      
+      {board?.groups?.map(group => 
+        <Group group={group} key={group.id} />
+      )}
     </section>
   </section>
 }
