@@ -58,7 +58,7 @@ export const Board = () => {
 
     <section className="main-board-section">
       {board?.groups?.map(group => 
-        <Group group={group} key={group.id} />
+        <Group key={group.id} group={group} labels={board.labels} />
       )}
     </section>
   </section>
