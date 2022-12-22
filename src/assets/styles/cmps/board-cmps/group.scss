@@ -1,62 +1,21 @@
 .group{
+    margin-block-end: 3rem;
     .group-title{
-        margin: 1rem 0;
+        margin-block-end: 1rem;
     }
-    table{
-        border-collapse: collapse;
-        text-align: center;
-        width: 100%;
-        th{
-            border: 1px solid $BorderColor;
+    .group-container{
+        .group-header{
+            width: 52%;
             height: 40px;
-            font-weight: 400;
-        }
-        td{
-            border: 1px solid $BorderColor;
-            height: 25px;
-        }
-        .checkbox-th{
-            width: 1%;
-            position: relative;
-            &::before{
-                position: relative;
-                content: '';
-                top: 0;
-                width: 5px;
-                height: 5px;
-                background-color: aqua;
+            span{font-size: 0.9rem;}
+            .header-cell{border: 1px solid $BorderColor;}
+            .header-checkbox{
+                padding: 0.5rem;
+                border-top-left-radius: 10px;
             }
-        }
-        .title-th{
-            width: 20%;
-        }
-        .person-th{
-            width: 5%;
-        }
-        .status-th{
-            width: 10%;
-        }
-        .date-th{
-            width: 10%;
-        }
-        .checkbox-td{
-            width: 1%;
-        }
-        .title-td{
-            width: 20%;
-        }
-        .person-td{
-            width: 5%;
-            img{
-                width: 30px;
-                height: 30px;
-            }
-        }
-        .status-td{
-            width: 10%;
-        }
-        .date-td{
-            width: 10%;
+            .header-item{width: 40%;}
+            .header-person{width: 24%;}
+            .header-status, .header-date{width: 18%;}
         }
     }
 }

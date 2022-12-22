@@ -1,0 +1,31 @@
+.task-row{
+    width: 100%;
+    border-bottom: 1px solid $BorderColor;
+    border-left: 1px solid $BorderColor;
+    font-size: 0.9rem;
+    .task-cell{
+        border-right: 1px solid $BorderColor;
+    }
+    .checkbox-cell{
+        padding: 0.5rem;
+    }
+    .item-cell{
+        width: 20%;
+    }
+    .person-cell{
+        width: 12%;
+        img{
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+        }
+    }
+    .status-cell{
+        border-right: 2px solid $BorderColor;
+        width: 9%;
+        color: white;
+    }
+    .date-cell{
+        width: 9%;
+    }
+}
