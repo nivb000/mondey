@@ -15,7 +15,7 @@ export const Task = ({ task, labels, groupId }) => {
             }
         </div>
         <div className="flex justify-center align-center status-cell task-cell" style={{backgroundColor: labels[task.statusLabel].color}}>
-            <span>{task.title}</span>
+            <span>{labels[task.statusLabel].title}</span>
         </div>
         <div className="flex justify-center align-center date-cell task-cell">
             <span>{task.date}</span>

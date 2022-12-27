@@ -7,6 +7,18 @@ export function loadBoards() {
             .then(boards => dispatch({ type: 'SET_BOARDS', boards }))
     }
 }
+export function setSelectedBoard(boardId) {
+    return (dispatch) => {
+        boardService.getById(boardId)
+            .then(board => dispatch({ type: 'SET_SELECTED', board }))
+    }
+}
+export function updateSelectedBoard(board) {
+    return (dispatch) => {
+        boardService.save(board)
+            .then(board => dispatch({ type: 'SET_SELECTED', board }))
+    }
+}
 export function addBoard(board) {
     return (dispatch) => {
         boardService.save(board)

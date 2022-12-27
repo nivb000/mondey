@@ -6,7 +6,7 @@ export const Group = ({ group, labels }) => {
         const checkBoxs = document.querySelectorAll(`input[id="${groupId} task-checkbox"]`)
         checkBoxs.forEach(checkbox => checkbox.checked ? checkbox.checked = false : checkbox.checked = true)
     }
-    
+
     //Maybe later details summary for each group
     return (
         <div className="group">
