@@ -1,4 +1,4 @@
-
+import { groupService } from '../../services/group.service.local'
 
 export function setGroup(groups) {
     return (dispatch) => dispatch({ type: 'SET_GROUPS', groups })

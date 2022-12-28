@@ -5,15 +5,36 @@
     font-size: 0.9rem;
     .task-cell{
         border-right: 1px solid $BorderColor;
+        height: 36px;
     }
     .checkbox-cell{
-        padding: 0.5rem;
+        input{margin: 0.5rem;}
+        position: relative;
+        &::before{
+            position: relative;
+            content: 'a';
+            width: 7px;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-color: aqua;
+            color: aqua;
+        }
     }
     .item-cell{
-        width: 20%;
+        min-width: 300px;
+        padding-inline-start: 2rem;
+        span{
+            padding: 0.1rem;
+            border: 1px solid transparent;
+            &:hover{
+                border: 1px solid $BorderColor;
+                border-radius: 5px;
+            }
+        }
     }
     .person-cell{
-        width: 12%;
+        min-width: 180px;
         img{
             width: 25px;
             height: 25px;
@@ -22,10 +43,10 @@
     }
     .status-cell{
         border-right: 2px solid $BorderColor;
-        width: 9%;
+        min-width: 132px;
         color: white;
     }
     .date-cell{
-        width: 9%;
+        min-width: 132px;
     }
 }

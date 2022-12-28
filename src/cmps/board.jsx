@@ -44,7 +44,11 @@ export const Board = () => {
   return <section className="board">
     <header className="top-section flex space-between">
       <div className="flex align-center top-l">
-        <h1 contentEditable spellCheck={false} suppressContentEditableWarning={true} onBlur={handleTitleUpdate}>
+        <h1 
+        contentEditable 
+        spellCheck={false} 
+        suppressContentEditableWarning={true}
+        onBlur={handleTitleUpdate}>
           {board?.title}
         </h1>
         <BiInfoCircle />

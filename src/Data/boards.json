@@ -48,7 +48,7 @@
                         "date": "20 Dec, 2022"
                     }
                 ],
-                "style": {}
+                "style": {"backgroundColor": "#579bfc","color": "#579bfc"}
             },
             {
                 "id": "g102",
@@ -111,7 +111,7 @@
                         }
                     }
                 ],
-                "style": {}
+                "style": {"backgroundColor": "#a25ddc","color": "#a25ddc"}
             }
         ],
         "activities": [
