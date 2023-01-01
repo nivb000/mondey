@@ -17,7 +17,6 @@ export function updateSelectedBoard(board) {
     return (dispatch) => {
         boardService.save(board)
             .then(board => dispatch({ type: 'SET_SELECTED', board }))
-            .then(updateBoard(board))
     }
 }
 export function addBoard(board) {

@@ -9,27 +9,21 @@
     }
     .checkbox-cell{
         input{margin: 0.5rem;}
-        position: relative;
-        &::before{
-            position: relative;
-            content: 'a';
-            width: 7px;
-            height: 100%;
-            left: 0;
-            top: 0;
-            background-color: aqua;
-            color: aqua;
-        }
     }
     .item-cell{
         min-width: 300px;
         padding-inline-start: 2rem;
         span{
-            padding: 0.1rem;
+            padding: 0.1rem 0.3rem;
             border: 1px solid transparent;
+            border-radius: 5px;
             &:hover{
                 border: 1px solid $BorderColor;
-                border-radius: 5px;
+            }
+            &:focus{
+                width: 80%;
+                outline: 0;
+                border: 1px solid rgb(0, 94, 255);
             }
         }
     }
@@ -45,8 +39,17 @@
         border-right: 2px solid $BorderColor;
         min-width: 132px;
         color: white;
+        position: relative;
+        cursor: pointer;
     }
-    .date-cell{
-        min-width: 132px;
+    .react-datepicker-wrapper{
+        width: 132px;
+        border: 1px solid $BorderColor;
+        input{
+            border: 0;
+            max-width: 100%;
+            height: 36px;
+            text-align: center;
+        }
     }
 }
