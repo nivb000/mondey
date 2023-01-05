@@ -6,13 +6,13 @@ import "react-datepicker/dist/react-datepicker.css";
 
 
 
-export const Task = ({ task, labels, coloredDivStyle, handleGroupUpdate }) => {
+export const Task = ({ task, labels, coloredDivStyle, handleSaveTask }) => {
 
     const [labelsIsOpen, setLabelsIsOpen] = useState(false)
     const [startDate, setStartDate] = useState(new Date())
 
 
-    const handleTaskUpdate = ({ target }, status) => {
+    const handleUpdate = ({ target }, status) => {
         const name = target.className
 
         switch (name) {
@@ -26,7 +26,7 @@ export const Task = ({ task, labels, coloredDivStyle, handleGroupUpdate }) => {
                 break;
         }
 
-        handleGroupUpdate(task)
+        handleSaveTask(task)
     }
 
 
@@ -36,7 +36,7 @@ export const Task = ({ task, labels, coloredDivStyle, handleGroupUpdate }) => {
             <input type="checkbox" id={`task-checkbox`} value={task.id} />
         </div>
         <div className="flex align-center item-cell task-cell">
-            <span contentEditable spellCheck={false} suppressContentEditableWarning={true} className="title" onBlur={handleTaskUpdate}>{task.title}</span>
+            <span contentEditable spellCheck={false} suppressContentEditableWarning={true} className="title" onBlur={handleUpdate}>{task.title}</span>
         </div>
         <div className="flex justify-center align-center person-cell task-cell">
             {task.members ? task.members.map(member => <img key={member.id} src={member.imgUrl} />) :
@@ -45,7 +45,7 @@ export const Task = ({ task, labels, coloredDivStyle, handleGroupUpdate }) => {
         </div>
         <div className="flex justify-center align-center status-cell task-cell" style={{ backgroundColor: labels[task.statusLabel].color }} onClick={() => setLabelsIsOpen(prev => !prev)}>
             <span>{labels[task.statusLabel].title}</span>
-            {labelsIsOpen && <Labels labels={labels} handleTaskUpdate={handleTaskUpdate} />}
+            {labelsIsOpen && <Labels labels={labels} handleUpdate={handleUpdate} />}
         </div>
         <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
     </div>

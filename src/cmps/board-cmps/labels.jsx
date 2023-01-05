@@ -4,13 +4,13 @@ import MenuList from '@mui/material/MenuList';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
 
-export const Labels = ({ labels, handleTaskUpdate}) => {
+export const Labels = ({ labels, handleUpdate}) => {
 
     return (
         <Paper className='flex col space-around align-center label-list'>
             <MenuList>
                 {labels?.map((label,idx) => <MenuItem key={label.id}
-                onClick={(ev) => handleTaskUpdate(ev,idx)}
+                onClick={(ev) => handleUpdate(ev,idx)}
                 className="label"
                 style={{backgroundColor: label.color}}>
                     <ListItemText>{label.title}</ListItemText>

@@ -1,19 +1,15 @@
 import { Task } from "./task"
 import { useDispatch } from "react-redux"
-import { groupService } from "../../services/group.service.local"
+import { taskService } from "../../services/task.service"
 import { updateGroup } from '../../store/actions/group.action'
+import { NewTask } from './new-task'
 
 export const Group = ({ group, labels, handleBoardUpdate }) => {
 
     const dispatch = useDispatch()
-    
 
-    const handleTaskUpdate = (task) => {
-        console.log('received task', task);
-    }
-
-    const handleGroupUpdate = (task) => {
-        groupService.updateTask(group, task)
+    const handleSaveTask = (task) => {
+        taskService.save(group, task)
             .then(group => dispatch(updateGroup(group)))
             .then(handleBoardUpdate())
     }
@@ -46,7 +42,13 @@ export const Group = ({ group, labels, handleBoardUpdate }) => {
                         <span>Date</span>
                     </div>
                 </div>
-                {group.tasks.map(task => <Task key={task.id} task={task} labels={labels} coloredDivStyle={coloredDivStyle} handleGroupUpdate={handleGroupUpdate} />)}
+                {group.tasks.map(task => <Task key={task.id} 
+                task={task} 
+                labels={labels} 
+                coloredDivStyle={coloredDivStyle}
+                handleSaveTask={handleSaveTask} />)}
+
+                <NewTask handleSaveTask={handleSaveTask} coloredDivStyle={coloredDivStyle} />
             </div>
 
         </div>

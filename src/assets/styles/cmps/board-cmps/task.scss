@@ -44,12 +44,28 @@
     }
     .react-datepicker-wrapper{
         width: 132px;
-        border: 1px solid $BorderColor;
+        border-bottom: 1px solid $BorderColor;
+        border-right: 1px solid $BorderColor;
         input{
             border: 0;
             max-width: 100%;
             height: 36px;
             text-align: center;
+        }
+    }
+}
+
+.new-task{
+    .colored, .task-cell{
+        opacity: 0.6;
+    }
+    .item-cell input{
+        width: 80%;
+        height: 30px;
+        border: 0;
+        outline: 0;
+        &:focus{
+            border: 1px solid blue;
         }
     }
 }
