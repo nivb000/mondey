@@ -7,9 +7,8 @@ import { updateBoard, updateSelectedBoard } from '../store/actions/board.action'
 import { setGroup } from '../store/actions/group.action'
 import { setSelectedBoard } from '../store/actions/board.action'
 import { useSelector } from "react-redux"
-import { BoardMiddleTop } from "./board-cmps/board-middletop"
 import { GroupList } from "./board-cmps/group-list"
-
+import { BoardTabs } from './mui/board-tabs'
 
 export const Board = () => {
 
@@ -44,11 +43,11 @@ export const Board = () => {
   return <section className="board">
     <header className="top-section flex space-between">
       <div className="flex align-center top-l">
-        <h1 
-        contentEditable 
-        spellCheck={false} 
-        suppressContentEditableWarning={true}
-        onBlur={handleTitleUpdate}>
+        <h1
+          contentEditable
+          spellCheck={false}
+          suppressContentEditableWarning={true}
+          onBlur={handleTitleUpdate}>
           {board?.title}
         </h1>
         <BiInfoCircle />
@@ -57,9 +56,8 @@ export const Board = () => {
       <div className="flex align-center top-r"></div>
     </header>
 
-    <BoardMiddleTop />
+    <BoardTabs groupsTab={<GroupList labels={board?.labels} />}/>
 
-    <GroupList labels={board?.labels} />
-    
+
   </section>
 }

@@ -1,8 +1,20 @@
 .group{
     margin-block-end: 3rem;
-    .group-title{
-        margin-block-end: 1rem;
-        margin-inline-start: 2.1rem;
+    div{
+        &:hover{
+            .group-menu{color: unset !important;}
+        }
+        position: relative;
+        .group-menu{
+            color: transparent !important;
+            position: relative;
+            bottom: 5px;
+            cursor: pointer;
+        }
+        .group-title{
+            margin-block-end: 1rem;
+            margin-inline-start: 2.1rem;
+        }
     }
     .group-container{
         .group-header{

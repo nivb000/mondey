@@ -3,10 +3,19 @@ import { useDispatch } from "react-redux"
 import { taskService } from "../../services/task.service"
 import { updateGroup } from '../../store/actions/group.action'
 import { NewTask } from './new-task'
+import { BsThreeDots } from 'react-icons/bs'
+import { useState } from "react"
+import { GroupOptions } from "../mui/group-options-menu"
 
 export const Group = ({ group, labels, handleBoardUpdate }) => {
 
     const dispatch = useDispatch()
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
 
     const handleSaveTask = (task) => {
         taskService.save(group, task)
@@ -22,7 +31,11 @@ export const Group = ({ group, labels, handleBoardUpdate }) => {
 
     return (
         <div className="group">
-            <h3 className="group-title" style={{ color: group.style.color }}>{group.title}</h3>
+            <div className="flex align-center">
+                <BsThreeDots className="group-menu" onClick={handleClick} />
+                <GroupOptions anchorEl={anchorEl} setAnchorEl={setAnchorEl} open={open} group={group} boardUpdate={handleBoardUpdate} />
+                <h3 className="group-title" style={{ color: group.style.color }}>{group.title}</h3>
+            </div>
             <div className="flex col group-container">
                 <div className="flex group-header">
                     <div className="flex justify-center align-center header-checkbox header-cell" >
@@ -42,11 +55,11 @@ export const Group = ({ group, labels, handleBoardUpdate }) => {
                         <span>Date</span>
                     </div>
                 </div>
-                {group.tasks.map(task => <Task key={task.id} 
-                task={task} 
-                labels={labels} 
-                coloredDivStyle={coloredDivStyle}
-                handleSaveTask={handleSaveTask} />)}
+                {group.tasks.map(task => <Task key={task.id}
+                    task={task}
+                    labels={labels}
+                    coloredDivStyle={coloredDivStyle}
+                    handleSaveTask={handleSaveTask} />)}
 
                 <NewTask handleSaveTask={handleSaveTask} coloredDivStyle={coloredDivStyle} />
             </div>

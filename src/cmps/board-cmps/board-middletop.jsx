@@ -1,14 +1,12 @@
-import { GrHomeRounded } from 'react-icons/gr'
+import { Button } from "@mui/material"
 
 export const BoardMiddleTop = () => {
 
 
-  return <section>
-  <div className="flex align-center board-nav">
-    <span className="flex align-center"><GrHomeRounded /><h5>Main Table</h5></span>
-  </div>
-  
-  <div className="flex space-between board-actions">
+  return <section className='board-middletop'>
+    <div className="flex board-actions">
+      <Button variant="contained" color="primary">New Item</Button>
+      <input type="text" placeholder="🔍 Search" />
     </div>
   </section>
 }
