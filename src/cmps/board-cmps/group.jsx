@@ -12,6 +12,7 @@ export const Group = ({ group, labels, handleBoardUpdate }) => {
     const dispatch = useDispatch()
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+    
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -33,7 +34,7 @@ export const Group = ({ group, labels, handleBoardUpdate }) => {
         <div className="group">
             <div className="flex align-center">
                 <BsThreeDots className="group-menu" onClick={handleClick} />
-                <GroupOptions anchorEl={anchorEl} setAnchorEl={setAnchorEl} open={open} group={group} boardUpdate={handleBoardUpdate} />
+                <GroupOptions anchorEl={anchorEl} setAnchorEl={setAnchorEl} open={open} group={group} />
                 <h3 className="group-title" style={{ color: group.style.color }}>{group.title}</h3>
             </div>
             <div className="flex col group-container">

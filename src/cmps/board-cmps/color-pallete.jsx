@@ -1,7 +1,7 @@
 import { updateGroup } from '../../store/actions/group.action'
 import { useDispatch } from 'react-redux'
 
-export const ColorPallete = ({ setOpenColors, group, boardUpdate }) => {
+export const ColorPallete = ({ setOpenColors, group }) => {
 
   const dispatch = useDispatch()
 
@@ -13,7 +13,6 @@ export const ColorPallete = ({ setOpenColors, group, boardUpdate }) => {
     group.style.backgroundColor = color
     group.style.color = color
     dispatch(updateGroup(group))
-    boardUpdate()
     setOpenColors(false)
   }
 

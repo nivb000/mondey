@@ -11,7 +11,7 @@ export function groupReducer(state = INITIAL_STATE, action) {
             return { ...state, groups: [...state.groups, action.group] }
 
         case 'REMOVE_GROUP':
-            return { ...state, groups: state.groups.filter(group => group._id !== action.groupId) }
+            return { ...state, groups: state.groups.filter(group => group.id !== action.groupId) }
 
         case 'UPDATE_GROUP':
             return {

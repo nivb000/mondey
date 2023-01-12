@@ -1,4 +1,5 @@
 import { asyncStorageService } from './async-storage.service.js'
+import { utilService } from './util.service.js'
 
 export const groupService = {
     getById,
@@ -17,6 +18,9 @@ function remove(groupId) {
 }
 
 function save(group) {
-    if(group._id) return asyncStorageService.put(KEY, group)
-    else return asyncStorageService.post(KEY, group)
+    if(group.id) return asyncStorageService.put(KEY, group)
+    else {
+        group.id = utilService.makeId(3)
+        return Promise.resolve(group)
+    }
 }
