@@ -1,13 +1,12 @@
 import { Task } from "./task"
 import { useDispatch } from "react-redux"
 import { taskService } from "../../services/task.service"
-import { updateGroup } from '../../store/actions/group.action'
 import { NewTask } from './new-task'
 import { BsThreeDots } from 'react-icons/bs'
 import { useState } from "react"
 import { GroupOptions } from "../mui/group-options-menu"
 
-export const Group = ({ group, labels, handleBoardUpdate }) => {
+export const Group = ({ group, labels }) => {
 
     const dispatch = useDispatch()
     const [anchorEl, setAnchorEl] = useState(null);
@@ -20,8 +19,7 @@ export const Group = ({ group, labels, handleBoardUpdate }) => {
 
     const handleSaveTask = (task) => {
         taskService.save(group, task)
-            .then(group => dispatch(updateGroup(group)))
-            .then(handleBoardUpdate())
+            .then(group => console.log(group,'updated'))
     }
 
     let coloredDivStyle = {
@@ -41,7 +39,7 @@ export const Group = ({ group, labels, handleBoardUpdate }) => {
                 <div className="flex group-header">
                     <div className="flex justify-center align-center header-checkbox header-cell" >
                         <div className="colored" style={coloredDivStyle}></div>
-                        <input type="checkbox" name="all-tasks-checkbox" onChange={() => checkAllTasks(group.id)} />
+                        <input type="checkbox" name="all-tasks-checkbox" />
                     </div>
                     <div className="flex justify-center align-center header-item header-cell">
                         <span>Item</span>

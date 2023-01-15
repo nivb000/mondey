@@ -4,7 +4,6 @@ import { BiInfoCircle } from 'react-icons/bi'
 import { CiStar } from 'react-icons/ci'
 import { useDispatch } from "react-redux"
 import { updateBoard, updateSelectedBoard } from '../store/actions/board.action'
-import { setGroup } from '../store/actions/group.action'
 import { setSelectedBoard } from '../store/actions/board.action'
 import { useSelector } from "react-redux"
 import { GroupList } from "./board-cmps/group-list"
@@ -36,7 +35,6 @@ export const Board = () => {
   useEffect(() => {
     if (board) {
       dispatch(updateBoard(board))
-      dispatch(setGroup(board.groups))
     }
   }, [board])
 

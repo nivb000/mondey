@@ -1,5 +1,4 @@
 import { AiOutlinePlus } from 'react-icons/ai'
-import { addGroup } from '../../store/actions/group.action'
 import { useDispatch } from 'react-redux'
 
 export const NewGroup = () => {
@@ -28,7 +27,7 @@ export const NewGroup = () => {
     }
 
     const handleAddGroup = () => {
-        dispatch(addGroup(group))
+        console.log('new group')
     }
 
     return <button onClick={handleAddGroup}>
