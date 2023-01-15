@@ -3,7 +3,6 @@ import MenuItem from '@mui/material/MenuItem';
 import { ColorPallete } from '../board-cmps/color-pallete'
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { removeGroup } from '../../store/actions/group.action';
 
 export const GroupOptions = ({ anchorEl, setAnchorEl, open, group }) => {
 
@@ -21,7 +20,7 @@ export const GroupOptions = ({ anchorEl, setAnchorEl, open, group }) => {
     }
 
     const handleDelete=()=>{
-        dispatch(removeGroup(group.id))
+        console.log('delete', group.id)
     }
 
     return (

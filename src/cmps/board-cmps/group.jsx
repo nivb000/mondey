@@ -1,17 +1,18 @@
 import { Task } from "./task"
 import { useDispatch } from "react-redux"
 import { taskService } from "../../services/task.service"
+import { updateSelectedBoardGroup } from '../../store/actions/board.action'
 import { NewTask } from './new-task'
 import { BsThreeDots } from 'react-icons/bs'
 import { useState } from "react"
 import { GroupOptions } from "../mui/group-options-menu"
 
-export const Group = ({ group, labels }) => {
+export const Group = ({ group, labels, handleBoardGroups }) => {
 
     const dispatch = useDispatch()
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
-    
+
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -19,7 +20,8 @@ export const Group = ({ group, labels }) => {
 
     const handleSaveTask = (task) => {
         taskService.save(group, task)
-            .then(group => console.log(group,'updated'))
+            .then(group => dispatch(updateSelectedBoardGroup(group)))
+            .then(handleBoardGroups())
     }
 
     let coloredDivStyle = {

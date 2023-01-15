@@ -4,7 +4,7 @@ import { BiInfoCircle } from 'react-icons/bi'
 import { CiStar } from 'react-icons/ci'
 import { useDispatch } from "react-redux"
 import { updateBoard, updateSelectedBoard } from '../store/actions/board.action'
-import { setSelectedBoard } from '../store/actions/board.action'
+import { loadSelectedBoard } from '../store/actions/board.action'
 import { useSelector } from "react-redux"
 import { GroupList } from "./board-cmps/group-list"
 import { BoardTabs } from './mui/board-tabs'
@@ -19,7 +19,7 @@ export const Board = () => {
 
   useEffect(() => {
     if (!boardId.startsWith(":")) {
-      dispatch(setSelectedBoard(boardId))
+      dispatch(loadSelectedBoard(boardId))
     } else {
       navigate(`/board/${boards[0]?._id}`)
     }

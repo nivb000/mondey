@@ -27,7 +27,7 @@ export const NewGroup = () => {
     }
 
     const handleAddGroup = () => {
-        console.log('new group')
+        // dispatch()
     }
 
     return <button onClick={handleAddGroup}>

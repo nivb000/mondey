@@ -12,6 +12,15 @@ export function boardReducer(state = INITIAL_STATE, action) {
 
         case 'SET_SELECTED':
             return { ...state, selectedBoard: action.board }
+    
+        case 'SET_SELECTED_GROUPS':
+            return { ...state, selectedBoard: {...state.selectedBoard, groups: action.groups }}
+    
+        case 'UPDATE_SELECTED_GROUP':
+            return { 
+                ...state, 
+                selectedBoard: {...state.selectedBoard, 
+                    groups:  state.selectedBoard.groups.filter(g => g.id === action.group.id ? g = action.group : g)}}
 
         case 'ADD_BOARD':
             return { ...state, boards: [...state.boards, action.board] }
