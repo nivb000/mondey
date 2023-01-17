@@ -1,7 +1,7 @@
 import { Task } from "./task"
 import { useDispatch } from "react-redux"
 import { taskService } from "../../services/task.service"
-import { updateSelectedBoardGroup } from '../../store/actions/board.action'
+import { updateSelectedBoardGroup } from '../../store/actions/group.action'
 import { NewTask } from './new-task'
 import { BsThreeDots } from 'react-icons/bs'
 import { useState } from "react"
@@ -13,8 +13,12 @@ export const Group = ({ group, labels, handleBoardGroups }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
+    const handleGroupTitle = ({ target }) => {
+        group.title = target.innerText
+        dispatch(updateSelectedBoardGroup(group))
+    }
 
-    const handleClick = (event) => {
+    const handleMenuModal = (event) => {
         setAnchorEl(event.currentTarget);
     };
 
@@ -33,9 +37,16 @@ export const Group = ({ group, labels, handleBoardGroups }) => {
     return (
         <div className="group">
             <div className="flex align-center">
-                <BsThreeDots className="group-menu" onClick={handleClick} />
+                <BsThreeDots className="group-menu" onClick={handleMenuModal} />
                 <GroupOptions anchorEl={anchorEl} setAnchorEl={setAnchorEl} open={open} group={group} />
-                <h3 className="group-title" style={{ color: group.style.color }}>{group.title}</h3>
+                <h3 className="group-title"
+                    contentEditable
+                    spellCheck={false}
+                    suppressContentEditableWarning={true}
+                    onBlur={handleGroupTitle}
+                    style={{ color: group.style.color }}>
+                    {group.title}
+                </h3>
             </div>
             <div className="flex col group-container">
                 <div className="flex group-header">

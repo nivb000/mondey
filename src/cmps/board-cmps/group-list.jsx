@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { setSelectedBoardGroups } from '../../store/actions/board.action'
+import { setSelectedBoardGroups } from '../../store/actions/group.action'
 import { Group } from './group'
 import { NewGroup } from './new-group'
 

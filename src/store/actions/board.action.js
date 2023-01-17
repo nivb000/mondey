@@ -1,5 +1,4 @@
 import { boardService } from "../../services/board.service.local";
-import { groupService } from '../../services/group.service'
 
 export function loadBoards() {
     return (dispatch, getState) => {
@@ -41,15 +40,5 @@ export function removeBoard(boardId) {
 export function setQueryFilter(filter) {
     return (dispatch) => {
         dispatch({ type: 'SET_FILTER', filter })
-    }
-}
-export function setSelectedBoardGroups(groups) {
-    return (dispatch) => dispatch({ type: 'SET_SELECTED_GROUPS', groups })
-}
-export function updateSelectedBoardGroup(updatedGroup) {
-    return (dispatch, getState) => {
-        const { selectedBoard } = getState().boardModule
-        groupService.save(selectedBoard.groups, updatedGroup)
-            .then(group => dispatch({ type: 'UPDATE_SELECTED_GROUP', group }))
     }
 }

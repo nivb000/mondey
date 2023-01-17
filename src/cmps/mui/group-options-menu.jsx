@@ -3,6 +3,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { ColorPallete } from '../board-cmps/color-pallete'
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { removeSelectedBoardGroup } from '../../store/actions/group.action'
 
 export const GroupOptions = ({ anchorEl, setAnchorEl, open, group }) => {
 
@@ -14,20 +15,20 @@ export const GroupOptions = ({ anchorEl, setAnchorEl, open, group }) => {
         setAnchorEl(null);
     };
 
-    const handleColorOpen=(value)=>{
+    const handleColorOpen = (value) => {
         setOpenColors(value)
         handleClose()
     }
 
-    const handleDelete=()=>{
-        console.log('delete', group.id)
+    const handleDelete = () => {
+        dispatch(removeSelectedBoardGroup(group.id))
     }
 
     return (
         <div>
             <Menu
                 id="basic-menu"
-                style={{position: "absolute"}}
+                style={{ position: "absolute" }}
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}

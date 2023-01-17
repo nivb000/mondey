@@ -1,5 +1,6 @@
 import { AiOutlinePlus } from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
+import { addSelectedBoardGroup } from '../../store/actions/group.action'
 
 export const NewGroup = () => {
 
@@ -27,10 +28,10 @@ export const NewGroup = () => {
     }
 
     const handleAddGroup = () => {
-        // dispatch()
+        dispatch(addSelectedBoardGroup(group))
     }
 
-    return <button onClick={handleAddGroup}>
+    return <button onClick={handleAddGroup} className="flex align-center space-around btn-new-group">
         <AiOutlinePlus />
         Add new group
     </button>
