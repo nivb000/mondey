@@ -1,0 +1,13 @@
+.main-board{
+    background-color: #eceff8;
+    height: 100vh;
+    .main-content{
+        & > section:not(.work-navbar){
+            flex-basis: 83%;
+        }
+        gap: 10px;
+        .work-navbar{
+            flex-basis: 17%;
+        }
+    }
+}

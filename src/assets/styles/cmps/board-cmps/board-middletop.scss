@@ -1,0 +1,41 @@
+.board-actions {
+    width: 40%;
+    height: 30px;
+    margin-block-end: 2.8rem;
+
+    button {
+        margin-inline-end: 1rem;
+    }
+
+    .search-container {
+        width: 105px;
+        border-radius: 5px;
+        cursor: pointer;
+        svg{padding-inline-start: 0.3rem; width: 25px; height: 25px;}
+        &:focus-within{
+            width: 250px;
+            border: 1px solid blue;
+            transition: width 0.1s;
+            background-color: transparent !important;
+        }
+        &:hover {
+            background-color: $BorderColor;
+            input{
+                background-color: $BorderColor;
+            }
+        }
+        input {
+            border: 0;
+            outline: 0;
+            border-radius: 5px;
+            padding-inline-start: 0.3rem;
+            height: 95%;
+            width: 70%;
+            cursor: pointer;
+            &:focus{
+                background-color: transparent !important;
+                cursor: text;
+            }
+        }
+    }
+}

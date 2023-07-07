@@ -1,0 +1,20 @@
+.label-list{
+    width: 200px;
+    background-color: aqua;
+    position: absolute !important;
+    top: 36px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,.32);
+    z-index: 3;
+    border-radius: 8px;
+    .label{
+        width: 100%;
+        margin: 1rem 0;
+        height: 32px;
+        line-height: 1.5;
+        color: white;
+        span{font-size: 0.9rem;}
+        &:hover{
+            opacity: 0.9;
+        }
+    }
+}

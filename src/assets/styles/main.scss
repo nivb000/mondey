@@ -1,0 +1,28 @@
+@import './typograpy.scss';
+@import './base.scss';
+@import './layout.scss';
+
+
+// VIEWS 
+@import './views/home-page.scss';
+@import './views/dash-board.scss';
+@import './views/main-board.scss';
+@import './views/login-page.scss';
+
+//CMPS
+@import './cmps/work-navbar.scss';
+@import './cmps/board.scss';
+@import './cmps/sideBar.scss';
+@import './cmps/navbar.scss';
+@import './cmps/board-list.scss';
+@import './cmps/board-preview.scss';
+@import './cmps/inbox.scss';
+
+//BOARD CMPS
+@import './cmps/board-cmps/board-middletop.scss';
+@import './cmps/board-cmps/group.scss';
+@import './cmps/board-cmps/task.scss';
+@import './cmps/board-cmps/labels.scss';
+@import './cmps/board-cmps/color-pallete.scss';
+@import './cmps/board-cmps/task-dock.scss';
+@import './cmps/board-cmps/board-members-modal.scss';

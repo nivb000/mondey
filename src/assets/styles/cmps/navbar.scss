@@ -1,0 +1,43 @@
+.new-navbar {
+    height: 48px;
+    width: 100%;
+    background-color: #eceff8;
+    padding-inline-end: 1rem;
+    padding-inline-start: 0.8rem;
+    padding-block-start: 0.3rem;
+    .navbar-main{
+        height: 100%;
+        .left-side{
+            .apps-svg{
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+            }
+            :nth-child(2){
+                margin-inline-end: 0.5rem;
+                margin-inline-start: 1.5rem;
+            }
+            h4{
+                font-family: 'bold';
+                span{font-family: 'regular';}
+            }
+        }
+        .right-side{
+            width: 20%;
+            a{
+                color: unset;
+                padding: 0.5rem;
+                svg{
+                    width: 20px;
+                    height: 20px;
+                    transform: translateY(5px);
+                }
+            }
+        }
+        a:hover, .left-side .apps-svg:hover{
+            background-color: #dcdfec;
+            border-radius: 5px;
+        }
+    }
+
+}

@@ -1,0 +1,104 @@
+.login-page {
+    height: 100vh;
+    header {
+        position: relative;
+        height: 65px;
+        background-color: #f7f7f7;
+        border-bottom: 1px solid $BorderColor;
+
+        img {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 180px;
+            height: 40px;
+            margin-left: 1rem;
+        }
+    }
+
+    .login-section {
+        height: 80%;
+        padding-top: 1rem;
+
+        .login-form {
+            width: 600px;
+            h1 {
+                font-size: 2.5rem;
+                font-weight: 200;
+            }
+
+            form {
+                width: 70%;
+                height: 50%;
+                .input-form{
+                    label{color: #929292;}
+                    input {
+                        width: 80%;
+                        height: 40px;
+                        padding: 6px 12px;
+                        border-radius: 5px;
+                        outline: 0;
+                        border: 1px solid $BorderColor;
+
+                        &:focus {
+                            border: 1px solid #0073ea;
+                        }
+                    }
+                }
+                span {
+                    color: #0073ea;
+                    font-size: 0.9rem;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+
+                button {
+                    width: 80%;
+                    height: 48px;
+                    align-self: center;
+                    transform: translateX(10%);
+                    color: white;
+                    background-color: #0073ea;
+                    border: 0;
+                    font-size: 1.2rem;
+                    cursor: pointer;
+
+                    svg {
+                        margin-inline-start: 1rem;
+                        width: 25px;
+                        height: 25px;
+                    }
+
+                    &:hover {
+                        background-color: #0060b9;
+                    }
+                }
+            }
+
+            div:nth-child(3) {
+                font-size: 0.9rem;
+                display: table;
+                white-space: nowrap;
+                &:before,
+                &:after {
+                    border-top: 2px solid #c5c7d0;
+                    content: '';
+                    display: table-cell;
+                    position: relative;
+                    top: 0.7rem;
+                    width: 40%;
+                }
+
+                &:before {
+                    right: 1.5%;
+                }
+
+                &:after {
+                    left: 1.5%;
+                }
+            }
+        }
+    }
+}

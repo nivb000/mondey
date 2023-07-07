@@ -1,0 +1,84 @@
+.task-row{
+    width: 100%;
+    border-bottom: 1px solid $BorderColor;
+    border-left: 1px solid $BorderColor;
+    font-size: 0.9rem;
+    .task-cell{
+        border-right: 1px solid $BorderColor;
+        height: 36px;
+    }
+    .checkbox-cell{
+        input{margin: 0.5rem;}
+    }
+    .item-cell{
+        min-width: 300px;
+        padding: 0 2rem;
+
+        span{
+            padding: 0.1rem 0.3rem;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            cursor: text;
+            &:hover{
+                border: 1px solid $BorderColor;
+            }
+            &:focus{
+                width: 80%;
+                outline: 0;
+                border: 1px solid rgb(0, 94, 255);
+            }
+        }
+        div{
+            display: none;
+            cursor: pointer;
+            svg{
+                transform: translateY(3px);
+                margin-inline-end: 0.5rem;
+            }
+        }
+        &:hover{
+            div{display: inline;}
+        }
+    }
+    .person-cell{
+        min-width: 180px;
+        img{
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+        }
+    }
+    .status-cell{
+        border-right: 2px solid $BorderColor;
+        min-width: 132px;
+        color: white;
+        position: relative;
+        cursor: pointer;
+    }
+    .react-datepicker-wrapper{
+        width: 131px;
+        border-bottom: 1px solid $BorderColor;
+        border-top: 1px solid $BorderColor;
+        input{
+            border: 0;
+            max-width: 100%;
+            height: 36px;
+            text-align: center;
+        }
+    }
+}
+    
+.new-task{
+    .colored, .task-cell{
+        opacity: 0.6;
+    }
+    .item-cell input{
+        width: 80%;
+        height: 30px;
+        border: 0;
+        outline: 0;
+        &:focus{
+            border: 1px solid blue;
+        }
+    }
+}

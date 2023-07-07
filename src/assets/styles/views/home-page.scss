@@ -1,0 +1,109 @@
+.home-page {
+    .home-nav {
+        position: sticky;
+        top: 0;
+        background-color: white;
+        padding: 1rem 70px;
+        z-index: 1;
+        &.scrolled{
+            box-shadow: 0px 3px 12px #e7f1f3;
+        }
+        
+        img {
+            width: 150px;
+        }
+
+        .nav-links {
+            >* {
+                margin: 0 0.5rem;
+            }
+            .nav-link{
+                text-decoration: none;
+                color: #828282;
+                font-size: 0.9rem;
+                padding: 0.5rem;
+                &:hover{
+                    border-radius: 7px;
+                    background-color: #f0f3ff;
+                    color: #644bff;
+                    // #f0f3ff
+                    // #644bff
+                }
+            }
+        }
+    }
+    .home-content{
+        padding-block-start: 65px;
+        .title-text{
+            text-align: center;
+            h1{
+                font-family: 'bold';
+                font-size:4.5rem;
+                line-height: 85px;
+                color: $Dark;
+            }
+            p{
+                margin: 2rem 0;
+                color: $DarkContent;
+                line-height: 2rem;
+                font-size: 18px;
+            }
+        }
+        .lower-text{
+            p{
+                font-family: 'ex-light';
+                margin: 2rem 0;
+                font-size: 0.9rem;
+                color: #0b0b0b;
+            }
+        }
+    }
+    footer{
+        margin-block-start: 3rem;
+        height: 150px;
+        border-top: 1px solid $BorderColor;
+        .project-creator{
+            a {color: #3d3d3d;}
+            p {margin-block-end: 0.5rem;}
+            svg{
+                margin-inline-end: 1rem;
+                width: 25px;
+                height: 25px;
+                cursor: pointer;
+                &:hover{
+                    opacity: 0.7;
+                }
+            }
+        }
+    }
+    .get-started-btn {
+        all: unset;
+        text-align: center;
+        position: relative;
+        background: #6161ff;
+        color: white;
+        border-radius: 30px;
+        cursor: pointer;
+        span{
+            position: relative;
+            bottom: 1px;
+            left: 7px;
+            transition: all 0.3s;
+        }
+        &:hover{
+            filter: brightness(90%);
+            span{
+                left: 10px;
+            }
+        }
+    }
+}
+
+.home-layout {
+    margin: 0 auto;
+    max-width: 90%;
+
+    &.full {
+        max-width: 100%;
+    }
+}

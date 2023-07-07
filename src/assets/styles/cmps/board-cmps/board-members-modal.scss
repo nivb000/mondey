@@ -1,0 +1,66 @@
+.board-members-modal{
+    svg{
+        position: absolute;
+        top: 15px;
+        right: 17px;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+    }
+    input{
+        margin: 1.5rem 0;
+        width: 100%;
+        height: 35px;
+        outline: 0;
+        border: 1px solid $BorderColor;
+        padding-inline-start: 0.5rem;
+        &:hover{border-color: black;}
+        &:focus{border-color: blue;}
+    }
+    .search-result-list, .board-members-list{
+        list-style: none;
+        li{
+            img{
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                margin-inline-end: 1rem;
+            }
+            p{
+                font-size: 0.9rem;
+            }
+        }
+    }
+    .search-result-list{
+        position: absolute;
+        width: 466px;
+        top: 22%;
+        min-height: 100px;
+        border-radius: 10px;
+        padding: 0.9rem 0.5rem;
+        background-color: white;
+        box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+        li{
+            button{
+                padding: 0.1rem 0.5rem;
+                outline: 0;
+                border: 1px solid $BorderColor;
+                background: white;
+                font-size: 0.9rem;
+                cursor: pointer;
+                &:hover{
+                    background-color: #e3e3e3;
+                }
+                &.sent{
+                    background-color: green;
+                    color: white;
+                }
+            }
+        }
+    }
+    .board-members-list{
+        >*{
+            margin: 1rem 0;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+.color-pallete{
+    position: absolute;
+    z-index: 3;
+    width: 150px;
+    height: 150px;
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    border: 1px solid black;
+    div{
+        width: 30px;
+        height: 30px;
+        border-radius: 7px;
+        cursor: pointer;
+    }
+}

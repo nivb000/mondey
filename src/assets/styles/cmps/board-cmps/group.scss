@@ -1,0 +1,61 @@
+.group{
+    margin-block-end: 3rem;
+    div{
+        &:hover{
+            .group-menu{color: unset !important;}
+        }
+        position: relative;
+        .group-menu{
+            color: transparent !important;
+            position: relative;
+            bottom: 5px;
+            cursor: pointer;
+        }
+        .group-title{
+            font-family: 'bold';
+            margin-block-end: 1rem;
+            margin-inline-start: 2.1rem;
+            border: 1px solid transparent;
+            padding: 0.2rem;
+            &:hover{
+                border: 1px solid $BorderColor;
+            }
+            &:focus{
+                width: 500px;
+                border: 1px solid blue;
+                outline: 0;
+            }
+        }
+    }
+    .group-container{
+        .group-header{
+            width: 52%;
+            height: 36px;
+            span{font-size: 0.9rem;}
+            .header-cell{border: 1px solid $BorderColor;}
+            .header-checkbox{
+                border-top-left-radius: 10px;
+                input{margin: 0.5rem;}
+                .colored{border-top-left-radius: 10px;}
+            }
+            .header-item{min-width: 300px;}
+            .header-person{min-width: 180px;}
+            .header-status, .header-date{min-width: 132px;}
+        }
+    }
+}
+.btn-new-group{
+    width: 130px;
+    height: 30px;
+    background: white;
+    border: 1px solid #c3c6d4;
+    border-radius: 5px;
+    svg{
+        width: 20px;
+        height: 20px;
+    }
+    &:hover{
+        background-color: $BorderColor;
+        cursor: pointer;
+    }
+}
