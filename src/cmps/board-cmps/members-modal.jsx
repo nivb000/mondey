@@ -18,13 +18,21 @@ const modalStyle = {
     padding: '24px 32px 8px 32px'
 }
 
-export const MembersModal = ({ boardId, handleModalClose, openModal, boardUsers }) => {
+export const MembersModal = ({ members, handleModalClose, openModal, saveBoardChanges }) => {
 
     const [emailToSearch, setEmailToSearch] = useState('')
     const [usersFound, setUsersFound] = useState([])
+    //TODO:boardUsers
+    const [boardUsers, setBoardUsers] = useState([])
     const debouncedSearchTerm = useDebounce(emailToSearch, 500)
     const [buttonText, setButtonText] = useState('Invite')
     const [buttonClassname, setButtonClassname] = useState('')
+
+    useEffect(() => {
+        if (members) {
+            getBoardUsers()
+        }
+    }, [members])
 
     useEffect(() => {
         const searchUsers = async () => {
@@ -37,15 +45,23 @@ export const MembersModal = ({ boardId, handleModalClose, openModal, boardUsers 
         searchUsers()
     }, [debouncedSearchTerm])
 
-    const inviteUser = async(user) => {
-        user.boardmentions.push(boardId.toString())
-        await userService.updateUser(user)
+    const inviteUser = (userId) => {
+        if (!members.includes(userId.toString())) {
+            members.push(userId.toString())
+        }
+        saveBoardChanges()
         setButtonText('Sent')
         setButtonClassname('sent')
         setTimeout(() => {
             setButtonClassname('')
             setButtonText('Invite')
+            setEmailToSearch('')
         }, 3000)
+    }
+
+    const getBoardUsers = async () => {
+        const boardUsers = await userService.getBoardUsers(members)
+        setBoardUsers(boardUsers)
     }
 
     return <Modal
@@ -63,7 +79,7 @@ export const MembersModal = ({ boardId, handleModalClose, openModal, boardUsers 
                         <img src={user.imgUrl} alt="user-profile-pic" />
                         <p>{user.fullname}</p>
                     </div>
-                    <button className={buttonClassname} onClick={() => inviteUser(user)}>{buttonText}</button>
+                    <button className={buttonClassname} onClick={() => inviteUser(user.id)}>{buttonText}</button>
                 </li>)}
             </ul>}
             <ul className="board-members-list">

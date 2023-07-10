@@ -12,12 +12,13 @@ export const GroupList = ({ labels }) => {
     const handleBoardGroups = () => {
         dispatch(setSelectedBoardGroups(board.groups))
     }
-    const handleDragEnd = () => {
+    const handleDragEnd = (groups) => {
+        console.log('groups is', groups)
         // TODO: ON DRAG END
     }
 
 
-    return <DragDropContext onDragEnd={handleDragEnd}>
+    return <DragDropContext onDragEnd={(groups) => handleDragEnd(groups)}>
         <section className='main-board-section'>
             {board?.groups?.map(group => <Group key={group.id} 
             group={group} 

@@ -18,7 +18,6 @@ export const MainBoard = () => {
     dispatch(loadBoards())
   }, [])
 
-
   return <section className="flex col main-board">
     <NavBar />
     {!boards ? <Loader /> :

@@ -10,7 +10,7 @@ export const Task = ({ task, labels, coloredDivStyle, handleSaveTask, provided }
 
     const [labelsIsOpen, setLabelsIsOpen] = useState(false)
     const [taskDate, setTaskDate] = useState(new Date(task.date))
-    
+
 
     const handleUpdate = ({ target }, status) => {
         const name = target.className
@@ -29,7 +29,7 @@ export const Task = ({ task, labels, coloredDivStyle, handleSaveTask, provided }
     }
 
     const handleDatePicker = (date) => {
-        const formatedDate  = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
+        const formatedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
         task.date = formatedDate
         setTaskDate(new Date(formatedDate))
         handleSaveTask(task)
@@ -59,10 +59,10 @@ export const Task = ({ task, labels, coloredDivStyle, handleSaveTask, provided }
             {labelsIsOpen && <Labels labels={labels} handleUpdate={handleUpdate} />}
         </div>
         <div className="flex justify-center align-center date-cell task-cell">
-            <DatePicker 
-            dateFormat="dd/MM/yyyy"
-            selected={taskDate} 
-            onChange={(date) => handleDatePicker(date)} />
+            <DatePicker
+                dateFormat="dd/MM/yyyy"
+                selected={taskDate}
+                onChange={(date) => handleDatePicker(date)} />
         </div>
     </div>
 }

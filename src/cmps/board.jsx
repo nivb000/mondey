@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { BiInfoCircle } from 'react-icons/bi'
 import { CiStar } from 'react-icons/ci'
 import { useDispatch } from "react-redux"
 import { loadSelectedBoard, updateBoard, updateSelectedBoard } from '../store/actions/board.action'
-import { userService } from "../services/user.service"
 import { useSelector } from "react-redux"
 import { GroupList } from "./board-cmps/group-list"
 import { BoardTabs } from './mui/board-tabs'
@@ -16,28 +15,41 @@ import { MembersModal } from "./board-cmps/members-modal"
 export const Board = () => {
 
   const dispatch = useDispatch()
-  const navigate = useNavigate()
   const params = useParams()
-  const { boards, selectedBoard: board } = useSelector(state => state.boardModule)
+  const { selectedBoard: board } = useSelector(state => state.boardModule)
   const { boardId } = params
   const [openModal, setOpenModal] = useState(false)
-  const [boardUsers, setBoardUsers] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleModalClose = () => setOpenModal(false)
 
   useEffect(() => {
-    if (!boardId.startsWith(":")) {
-      dispatch(loadSelectedBoard(boardId))
-      getBoardUsers()
-    } else {
-      navigate(`/board/${boards[0]?.id}`)
+    setIsLoading(true)
+    if (!isLoading) {
+      try {
+        dispatch(loadSelectedBoard(boardId))
+        // if (!boardId.startsWith(":")) {
+        // } else {
+        //   navigate(`/board/${boards[0]?.id}`)
+        // }     
+      } catch (error) {
+        console.log('err', error)
+      } finally {
+        setIsLoading(false)
+      }
     }
 
-  }, [boardId])
+    return () => setIsLoading(false)
 
-  const handleTitleUpdate = ({ target }) => {
+  }, [boardId, isLoading])
+
+  const handleTitleUpdate = async ({ target }) => {
     const value = target.innerText
     board.title = value
+    saveBoardChanges()
+  }
+
+  const saveBoardChanges = () => {
     dispatch(updateSelectedBoard(board))
   }
 
@@ -49,11 +61,6 @@ export const Board = () => {
 
     return () => document.title = 'Mondey'
   }, [board])
-
-  const getBoardUsers = async () => {
-    const users = await userService.getBoardUsers(boardId)
-    setBoardUsers(users)
-  }
 
   return <section className="board">
     <header className="top-section flex space-between">
@@ -77,10 +84,10 @@ export const Board = () => {
     </header>
 
     <MembersModal
-      boardId={boardId}
+      members={board?.members}
       handleModalClose={handleModalClose}
       openModal={openModal}
-      boardUsers={boardUsers} />
+      saveBoardChanges={saveBoardChanges} />
 
     <BoardTabs groupsTab={<GroupList labels={board?.labels} />} />
     <TaskDock />

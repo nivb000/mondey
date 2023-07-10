@@ -1,17 +1,27 @@
-import { useState, useMemo } from "react";
-import { NavLink } from "react-router-dom";
+import { useState } from "react"
+import { NavLink } from "react-router-dom"
 import { GrHomeRounded } from 'react-icons/gr'
 import { BsThreeDots } from 'react-icons/bs'
 import { BiFilterAlt, BiSearch } from 'react-icons/bi'
-import { IconMenu } from './mui/icon-menu'
+import { BoardMenu } from "./mui/board-menu"
+import { useDispatch } from "react-redux"
+import { addBoard } from "../store/actions/board.action"
+import { createBoard } from "../Data/boardTemplate"
 
 export const WorkNavbar = ({ boards }) => {
 
-  const [MenuModal, setMenuModal] = useState(false)
+  const dispatch = useDispatch()
+  const [anchorEl, setAnchorEl] = useState(null)
+  const open = Boolean(anchorEl)
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
 
-
-  useMemo(() => boards, [boards])
-
+  const handleAddNewBoard = () => {
+    const boardName = "Board " + (boards.length + 1)
+    const board = createBoard(boardName)
+    dispatch(addBoard(board))
+  }
 
   return <section className="work-navbar">
     <div className="top-items">
@@ -31,9 +41,12 @@ export const WorkNavbar = ({ boards }) => {
     <hr />
     <div className="flex col boards-list">
       <h3>Main workspace</h3>
-      <div className="flex align-center input-wrapper">
-        <BiSearch />
-        <input type="search" placeholder="Search" />
+      <div className="flex space-between list-action">
+        <div className="flex align-center input-wrapper">
+          <BiSearch />
+          <input type="search" placeholder="Search" />
+        </div>
+        <button onClick={handleAddNewBoard}>+</button>
       </div>
       <ul>
         {boards?.map(board => <li key={board.id}>
@@ -44,9 +57,13 @@ export const WorkNavbar = ({ boards }) => {
               </svg>
               <span>{board.title}</span>
             </div>
-            <BsThreeDots className="three-dots" onClick={() => setMenuModal(prev => !prev)} />
+            <BsThreeDots className="three-dots" onClick={handleClick} />
           </NavLink>
-          {MenuModal && <IconMenu setMenuModal={setMenuModal} boardId={board.id} />}
+          <BoardMenu
+            anchorEl={anchorEl}
+            setAnchorEl={setAnchorEl}
+            open={open}
+            boardId={board.id} />
         </li>)}
       </ul>
     </div>
