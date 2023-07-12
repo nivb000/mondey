@@ -3,10 +3,13 @@ import { Link } from "react-router-dom"
 import logo from '../assets/imgs/mondey_logo_login.png'
 import { useState } from "react"
 import { BsLinkedin, BsGithub, BsGlobe } from 'react-icons/bs'
+import { IoMdMenu } from 'react-icons/io'
+import { GrClose } from 'react-icons/gr'
 
 export const HomePage = () => {
 
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(true)
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
@@ -27,7 +30,7 @@ export const HomePage = () => {
   return <section className="home-page">
     <div className={`flex space-between align-center home-nav ${isScrolled ? 'scrolled' : ''}`}>
       <img src={logo} alt="logo" />
-      <div className="nav-links">
+      <div className={isMobileNavOpen ? 'mobile-nav-links' : 'nav-links'}>
         <Link to="/login" className="nav-link">Log in</Link>
         <Link to="/board">
           <button className="get-started-btn" style={{ padding: '0.5rem 1.2rem 0.5rem 0.7rem', fontSize: '14px', width: '100px' }}>
@@ -36,6 +39,11 @@ export const HomePage = () => {
           </button>
         </Link>
       </div>
+      {isMobileNavOpen ?
+        <GrClose className="mobile-menu-btn" onClick={() => setIsMobileNavOpen(false)} />
+        :
+        <IoMdMenu className="mobile-menu-btn" onClick={() => setIsMobileNavOpen(true)} />
+      }
     </div>
     <section className="home-layout home-content">
       <div className="title-text">

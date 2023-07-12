@@ -1,12 +1,12 @@
 import { Task } from "./task"
 import { useDispatch } from "react-redux"
-import { taskService } from "../../services/task.service"
 import { updateSelectedBoardGroup } from '../../store/actions/group.action'
 import { NewTask } from './new-task'
 import { BsThreeDots } from 'react-icons/bs'
 import { useState } from "react"
 import { GroupOptions } from "../mui/group-options-menu"
 import { Droppable, Draggable } from "react-beautiful-dnd"
+import { taskService } from "../../services/task.service"
 
 export const Group = ({ group, labels, handleBoardGroups }) => {
 
@@ -20,12 +20,21 @@ export const Group = ({ group, labels, handleBoardGroups }) => {
     }
 
     const handleMenuModal = (event) => {
-        setAnchorEl(event.currentTarget);
+        setAnchorEl(event.currentTarget)
     }
 
     const handleSaveTask = async (task) => {
         try {
             const savedGroup = await taskService.save(group, task)
+            dispatch(updateSelectedBoardGroup(savedGroup))
+            handleBoardGroups()
+        } catch (err) {
+            console.error(err)
+        }
+    }
+    const handleRemoveTask = async(taskId) => {
+        try {
+            const savedGroup = await taskService.remove(group, taskId)
             dispatch(updateSelectedBoardGroup(savedGroup))
             handleBoardGroups()
         } catch (err) {
@@ -40,7 +49,7 @@ export const Group = ({ group, labels, handleBoardGroups }) => {
     }
 
     return (
-        <Droppable key={group.id} droppableId={group.id}>
+        <Droppable key={group.id} droppableId={group.id} >
             {(provided) => (
                 <div className="group">
                     <div className="flex align-center">
@@ -82,10 +91,12 @@ export const Group = ({ group, labels, handleBoardGroups }) => {
                                 labels={labels}
                                 coloredDivStyle={coloredDivStyle}
                                 handleSaveTask={handleSaveTask}
+                                handleRemoveTask={handleRemoveTask}
                                 provided={provided}/>
                             )}
                         </Draggable>
                         ))}
+                        {provided.placeholder}
                         <NewTask handleSaveTask={handleSaveTask} coloredDivStyle={coloredDivStyle} />
                     </div>
                 </div>

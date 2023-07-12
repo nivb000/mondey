@@ -13,10 +13,8 @@ const KEY = 'board'
 async function query(userId) {
     const boards = await httpService.get(KEY, {userId})
     if (!boards || !boards.length) {
-        console.log('Creating First Board...')
         let board = createBoard()
-        await httpService.post(KEY, board)
-        //TODO return the first board
+        return await httpService.post(KEY, board)
     }
     return boards
 }

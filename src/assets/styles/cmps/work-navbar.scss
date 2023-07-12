@@ -105,11 +105,9 @@
                     border-radius: 5px;
 
                     &:hover {
-                        .three-dots {
-                            display: inline;
-                        }
+                        .three-dots {fill: black;}
                     }
-
+                    
                     div {
                         span {
                             margin-inline-start: 0.5rem;
@@ -117,13 +115,8 @@
                             color: black;
                         }
                     }
-                }
-
-
-                .three-dots {
-                    display: none;
-                    font-size: 1.2rem;
-                }
+                }      
+                .three-dots {fill: none;}
             }
         }
     }

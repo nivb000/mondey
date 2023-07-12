@@ -13,6 +13,14 @@
             width: 150px;
         }
 
+        .mobile-menu-btn{
+            display: none;
+        }
+
+        .mobile-nav-links{
+            display: none;
+        }
+
         .nav-links {
             >* {
                 margin: 0 0.5rem;

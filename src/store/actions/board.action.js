@@ -1,4 +1,4 @@
-import { boardService } from "../../services/board.service";
+import { boardService } from "../../services/board.service"
 
 export function loadBoards() {
     return (dispatch, getState) => {
@@ -12,12 +12,6 @@ export function loadBoards() {
 export function loadSelectedBoard(boardId) {
     return (dispatch) => {
         boardService.getById(boardId)
-            .then(board => dispatch({ type: 'SET_SELECTED', board }))
-    }
-}
-export function updateSelectedBoard(board) {
-    return (dispatch) => {
-        boardService.save(board)
             .then(board => dispatch({ type: 'SET_SELECTED', board }))
     }
 }

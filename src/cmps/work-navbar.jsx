@@ -1,7 +1,5 @@
-import { useState } from "react"
 import { NavLink } from "react-router-dom"
 import { GrHomeRounded } from 'react-icons/gr'
-import { BsThreeDots } from 'react-icons/bs'
 import { BiFilterAlt, BiSearch } from 'react-icons/bi'
 import { BoardMenu } from "./mui/board-menu"
 import { useDispatch } from "react-redux"
@@ -11,11 +9,6 @@ import { createBoard } from "../Data/boardTemplate"
 export const WorkNavbar = ({ boards }) => {
 
   const dispatch = useDispatch()
-  const [anchorEl, setAnchorEl] = useState(null)
-  const open = Boolean(anchorEl)
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget)
-  }
 
   const handleAddNewBoard = () => {
     const boardName = "Board " + (boards.length + 1)
@@ -57,13 +50,8 @@ export const WorkNavbar = ({ boards }) => {
               </svg>
               <span>{board.title}</span>
             </div>
-            <BsThreeDots className="three-dots" onClick={handleClick} />
+            <BoardMenu boardId={board.id} />
           </NavLink>
-          <BoardMenu
-            anchorEl={anchorEl}
-            setAnchorEl={setAnchorEl}
-            open={open}
-            boardId={board.id} />
         </li>)}
       </ul>
     </div>

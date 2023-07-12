@@ -1,5 +1,5 @@
 .task-dock{
-    position: absolute;
+    position: fixed;
     z-index: 9;
     bottom: 50px;
     left: calc(60% - 356px);
@@ -10,7 +10,7 @@
     border-radius: 7px;
     .dock-left{
         flex-basis: 30%;
-        div{
+        .counter{
             height: 100%;
             width: 30%;
             background-color: #0073ea;
@@ -43,5 +43,6 @@
     .dock-close{
         flex-basis: 10%;
         border-left: 2px solid #c3c6d4;
+        cursor: pointer;
     }
 }

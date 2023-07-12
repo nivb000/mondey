@@ -22,7 +22,6 @@ export const MembersModal = ({ members, handleModalClose, openModal, saveBoardCh
 
     const [emailToSearch, setEmailToSearch] = useState('')
     const [usersFound, setUsersFound] = useState([])
-    //TODO:boardUsers
     const [boardUsers, setBoardUsers] = useState([])
     const debouncedSearchTerm = useDebounce(emailToSearch, 500)
     const [buttonText, setButtonText] = useState('Invite')

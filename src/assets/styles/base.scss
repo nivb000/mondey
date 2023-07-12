@@ -82,3 +82,11 @@ $BorderColor: #d0d4e4;
     transform: rotate(360deg);
   }
 }
+@keyframes fade-in{
+  0% {
+    left: -500px;
+  }
+  100% {
+    left: 0;
+  }
+}

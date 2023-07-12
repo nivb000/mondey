@@ -2,11 +2,12 @@ import { useState } from "react"
 import { Labels } from "./labels"
 import DatePicker from "react-datepicker";
 import { IoIosResize } from 'react-icons/io'
+import { TaskMenu } from '../mui/task-menu'
 import "react-datepicker/dist/react-datepicker.css";
 
 
 
-export const Task = ({ task, labels, coloredDivStyle, handleSaveTask, provided }) => {
+export const Task = ({ task, labels, coloredDivStyle, handleSaveTask, handleRemoveTask, provided }) => {
 
     const [labelsIsOpen, setLabelsIsOpen] = useState(false)
     const [taskDate, setTaskDate] = useState(new Date(task.date))
@@ -38,6 +39,7 @@ export const Task = ({ task, labels, coloredDivStyle, handleSaveTask, provided }
 
 
     return <div className="flex task-row" ref={provided.innerRef}   {...provided.draggableProps} {...provided.dragHandleProps}>
+        <TaskMenu taskId={task.id} handleRemoveTask={handleRemoveTask} />
         <div className="flex justify-center align-center checkbox-cell task-cell">
             <div className="colored" style={coloredDivStyle}></div>
             <input type="checkbox" id={`task-checkbox`} value={task.id} />
@@ -50,7 +52,7 @@ export const Task = ({ task, labels, coloredDivStyle, handleSaveTask, provided }
             </div>
         </div>
         <div className="flex justify-center align-center person-cell task-cell">
-            {task.members ? task.members.map(member => <img key={member.id} src={member.imgUrl} />) :
+            {task.members.length > 0 ? task.members.map(member => <img key={member.id} src={member.imgUrl} />) :
                 <img src="https://cdn.monday.com/icons/dapulse-person-column.svg" />
             }
         </div>

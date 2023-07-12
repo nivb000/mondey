@@ -2,11 +2,13 @@ import { useState } from "react"
 
 export const NewTask = ({ handleSaveTask, coloredDivStyle }) => {
 
+  const currDate = new Date() 
+
   const [task, setTask] = useState({
     title: "",
     statusLabel: 0,
-    memebers: [],
-    date: new Date()
+    members: [],
+    date: `${currDate.getMonth() + 1}/${currDate.getDate()}/${currDate.getFullYear()}`
   })
 
   const handleChange = ({ target }) => {
