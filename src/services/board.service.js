@@ -1,5 +1,5 @@
 import { httpService } from './http.service.js'
-import { createBoard } from '../Data/boardTemplate.js'
+import { createBoard } from '../data/boardTemplate.js'
 
 export const boardService = {
     getById,

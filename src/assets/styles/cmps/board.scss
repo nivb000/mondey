@@ -7,6 +7,9 @@
     .top-section{
         width: 100%;
         margin-block-end: 2rem;
+        .mobile-back-btn{
+            display: none;
+        }
         .top-l{
             width: 70%;
             h1{

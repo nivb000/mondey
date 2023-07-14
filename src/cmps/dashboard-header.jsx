@@ -1,5 +1,6 @@
 import headerBg from '../assets/imgs/header-background.svg'
 import { AiOutlineThunderbolt } from 'react-icons/ai'
+import logo from '../assets/imgs/mondey_logo_login.png'
 
 
 export const DashHeader = ({ user }) => {
@@ -27,6 +28,7 @@ export const DashHeader = ({ user }) => {
     }
 
     return <header>
+        <img src={logo} alt="header-mobile-logo" />
         <div className='flex space-between align-center'>
             {headerSentence()}
             <img src={headerBg} alt="header-background" />

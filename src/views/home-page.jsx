@@ -9,7 +9,7 @@ import { GrClose } from 'react-icons/gr'
 export const HomePage = () => {
 
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileNavOpen, setIsMobileNavOpen] = useState(true)
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)

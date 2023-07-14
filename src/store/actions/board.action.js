@@ -23,6 +23,7 @@ export function addBoard(board) {
 }
 export function updateBoard(board) {
     return (dispatch) => {
+        board.archivedat = Date.now()
         boardService.save(board)
             .then(board => dispatch({ type: 'UPDATE_BOARD', board }))
     }

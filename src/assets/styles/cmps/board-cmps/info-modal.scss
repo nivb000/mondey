@@ -1,0 +1,31 @@
+.info-modal{
+    .right-info,.left-info{
+        padding: 2rem 3rem;
+    }
+    .right-info{
+        flex-basis: 60%;
+        h1{font-family: 'bold';}
+    }
+    .left-info{
+        background-color: #f5f6f8;
+        flex-basis: 40%;
+        div{
+            margin: 1rem 0;
+            h4{
+                color: #737373;
+                margin-block-end: 0.3rem;
+            }
+            span{
+                font-size: 0.9rem;
+            }
+            div{
+                img{
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 50%;
+                    margin-inline-end: 1rem;
+                }
+            }
+        }
+    }
+}

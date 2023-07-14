@@ -4,7 +4,7 @@ import { BiFilterAlt, BiSearch } from 'react-icons/bi'
 import { BoardMenu } from "./mui/board-menu"
 import { useDispatch } from "react-redux"
 import { addBoard } from "../store/actions/board.action"
-import { createBoard } from "../Data/boardTemplate"
+import { createBoard } from "../data/boardTemplate"
 
 export const WorkNavbar = ({ boards }) => {
 

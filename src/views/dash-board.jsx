@@ -21,13 +21,13 @@ export const DashBoard = ({ boards }) => {
               <BoardsList boards={boards} />
             </details>
           </section>
-          <section className='boards-show'>
+          <section className='inbox-show'>
             <details>
               <summary data-count="0" className='inbox'>Inbox</summary>
               <Inbox />
             </details>
           </section>
-          <section className='boards-show'>
+          <section className='workspaces-show'>
             <details>
               <summary>My workspaces</summary>
             </details>
