@@ -89,13 +89,16 @@ export const Board = () => {
       openModal={openModal}
       saveBoardChanges={saveBoardChanges} />
 
-      <InfoModal
-      boardTitle={board.title}
-      createdAt={board.createdat}
-      createdByName={board["createdby.fullname"]} 
-      createdByImg={board["createdby.imgurl"]}  
-      handleClose={handleInfoModalClose} 
-      open={infoModal}/>
+      {
+        board && 
+        <InfoModal
+        boardTitle={board.title}
+        createdAt={board.createdat}
+        createdByName={board["createdby.fullname"]} 
+        createdByImg={board["createdby.imgurl"]}  
+        handleClose={handleInfoModalClose} 
+        open={infoModal}/>
+      }
 
     <BoardTabs groupsTab={<GroupList labels={board?.labels} />} />
   </section>
