@@ -13,10 +13,9 @@ import { InfoModal } from "./board-cmps/info-modal"
 
 
 export const Board = () => {
-  //TODO: board last edited on mobile, socket
   const dispatch = useDispatch()
-  const params = useParams()
   const navigate = useNavigate()
+  const params = useParams()
 
   const { selectedBoard: board } = useSelector(state => state.boardModule)
   const { boardId } = params

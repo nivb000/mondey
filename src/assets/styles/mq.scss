@@ -98,6 +98,7 @@
         }
 
         .dash-board {
+            .bottom-nav{display: inline;}
             header {
                 height: 70px;
                 display: flex;
@@ -185,6 +186,9 @@
                 .top-r{display: none;}
                 .top-l{
                     justify-content: center;
+                    h1{
+                        font-size: 1.1rem;
+                    }
                 }
             }
             .css-19kzrtu{

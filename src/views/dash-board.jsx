@@ -2,6 +2,7 @@ import { BoardsList } from '../cmps/board-list'
 import { DashHeader } from '../cmps/dashboard-header'
 import { Inbox } from '../cmps/inbox'
 import { useSelector } from "react-redux"
+import { BottomNav } from '../cmps/mui/bottom-nav'
 
 
 export const DashBoard = ({ boards }) => {
@@ -37,6 +38,7 @@ export const DashBoard = ({ boards }) => {
           <h4>Learn & get inspired</h4>
         </section>
       </main>
+      <BottomNav />
     </section >
   )
 }
