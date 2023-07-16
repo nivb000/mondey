@@ -47,7 +47,7 @@ export const LoginPage = () => {
         <img src={logo} alt="mondey-logo" />
       </Link>
     </header>
-    {open && <NotificationModal msg={error?.msg} severity={error?.type} open={open} setOpen={setOpen} setError={setError} />}
+    {open && <NotificationModal msg={error?.msg} severity={error?.type} open={open} setOpen={setOpen} />}
     <div className="flex justify-center login-section">
       <div className='flex col space-between align-center login-form'>
         <h1>Log In</h1>

@@ -139,7 +139,8 @@
                             height: 100px;
                             grid-template-areas:
                                 'img headline headline headline headline'
-                                'img text text text text';
+                                'img text text text text'
+                                'le le le le le';
                             img {
                                 width: 100%;
                                 height: 100%;
@@ -157,6 +158,12 @@
                                 span{
                                     font-size: 0.6rem;
                                 }
+                            }
+                            .last-edited{
+                                font-size: 0.7rem;
+                                color: #676879;
+                                display: inline;
+                                grid-area: le;
                             }
                         }
                     }

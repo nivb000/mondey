@@ -16,7 +16,7 @@ export const createBoard = (title = "Board 1") => {
             fullname: user.fullname,
             imgUrl: user.imgUrl
         },
-        style: {},
+        isFavorite: false,
         labels: [
             {
                 id: "l101",

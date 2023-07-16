@@ -9,9 +9,6 @@ export function updateSelectedBoardGroup(group) {
 export function removeSelectedBoardGroup(groupId) {
     return (dispatch) => dispatch({ type: 'REMOVE_GROUP', groupId })
 }
-export function addSelectedBoardGroup(newGroup) {
-    return (dispatch) => {
-        groupService.add(newGroup)
-            .then(group => dispatch({ type: 'ADD_GROUP', group }))
-    }
+export function addSelectedBoardGroup(group) {
+    return (dispatch) => dispatch({ type: 'ADD_GROUP', group })
 }

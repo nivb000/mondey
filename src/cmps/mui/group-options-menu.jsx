@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { removeSelectedBoardGroup } from '../../store/actions/group.action'
 
-export const GroupOptions = ({ anchorEl, setAnchorEl, open, group }) => {
+export const GroupOptions = ({ anchorEl, setAnchorEl, open, group, saveGroupChanges }) => {
 
     const dispatch = useDispatch()
     const [openColors, setOpenColors] = useState(false)
@@ -39,7 +39,7 @@ export const GroupOptions = ({ anchorEl, setAnchorEl, open, group }) => {
                 <MenuItem onClick={() => handleColorOpen(true)}>Change Color</MenuItem>
                 <MenuItem onClick={handleDelete}>Delete</MenuItem>
             </Menu>
-            {openColors && <ColorPallete setOpenColors={setOpenColors} group={group} />}
+            {openColors && <ColorPallete setOpenColors={setOpenColors} group={group} saveGroupChanges={saveGroupChanges} />}
         </div>
     );
 }

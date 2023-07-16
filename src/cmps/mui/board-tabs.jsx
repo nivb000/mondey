@@ -1,9 +1,8 @@
-import { useState } from 'react';
-import { BoardMiddleTop } from "../board-cmps/board-middletop"
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
+import { useState } from 'react'
+import PropTypes from 'prop-types'
+import Tabs from '@mui/material/Tabs'
+import Tab from '@mui/material/Tab'
+import Box from '@mui/material/Box'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -40,11 +39,11 @@ function a11yProps(index) {
 
 export const BoardTabs = ({ groupsTab }) => {
 
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(0)
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+    setValue(newValue)
+  }
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -55,7 +54,6 @@ export const BoardTabs = ({ groupsTab }) => {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <BoardMiddleTop />
         {groupsTab}
       </TabPanel>
       <TabPanel value={value} index={1}>

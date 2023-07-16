@@ -1,6 +1,4 @@
 import { Task } from "./task"
-import { useDispatch } from "react-redux"
-import { updateSelectedBoardGroup } from '../../store/actions/group.action'
 import { NewTask } from './new-task'
 import { BsThreeDots } from 'react-icons/bs'
 import { useState } from "react"
@@ -8,15 +6,14 @@ import { GroupOptions } from "../mui/group-options-menu"
 import { Droppable, Draggable } from "react-beautiful-dnd"
 import { taskService } from "../../services/task.service"
 
-export const Group = ({ group, labels, handleBoardGroups }) => {
+export const Group = ({ group, labels, saveGroupChanges }) => {
 
-    const dispatch = useDispatch()
     const [anchorEl, setAnchorEl] = useState(null)
     const open = Boolean(anchorEl)
 
     const handleGroupTitle = ({ target }) => {
         group.title = target.innerText
-        dispatch(updateSelectedBoardGroup(group))
+        saveGroupChanges(group)
     }
 
     const handleMenuModal = (event) => {
@@ -24,37 +21,27 @@ export const Group = ({ group, labels, handleBoardGroups }) => {
     }
 
     const handleSaveTask = async (task) => {
-        try {
-            const savedGroup = await taskService.save(group, task)
-            dispatch(updateSelectedBoardGroup(savedGroup))
-            handleBoardGroups()
-        } catch (err) {
-            console.error(err)
-        }
+        const savedGroup = await taskService.save(group, task)
+        saveGroupChanges(savedGroup)
     }
-    const handleRemoveTask = async(taskId) => {
-        try {
-            const savedGroup = await taskService.remove(group, taskId)
-            dispatch(updateSelectedBoardGroup(savedGroup))
-            handleBoardGroups()
-        } catch (err) {
-            console.error(err)
-        }
-    }
+    const handleRemoveTask = async (taskId) => {
+        const savedGroup = await taskService.remove(group, taskId)
+        saveGroupChanges(savedGroup)
+    }    
 
     let coloredDivStyle = {
         width: '7px',
         height: '100%',
         backgroundColor: group.style.color,
     }
-
+    
     return (
         <Droppable key={group.id} droppableId={group.id} >
             {(provided) => (
                 <div className="group">
                     <div className="flex align-center">
                         <BsThreeDots className="group-menu" onClick={handleMenuModal} />
-                        <GroupOptions anchorEl={anchorEl} setAnchorEl={setAnchorEl} open={open} group={group} />
+                        <GroupOptions anchorEl={anchorEl} setAnchorEl={setAnchorEl} open={open} group={group} saveGroupChanges={saveGroupChanges} />
                         <h3 className="group-title"
                             contentEditable
                             spellCheck={false}
@@ -83,18 +70,18 @@ export const Group = ({ group, labels, handleBoardGroups }) => {
                                 <span>Date</span>
                             </div>
                         </div>
-                        {group.tasks.map((task,index) => (
-                        <Draggable key={task.id} draggableId={task.id} index={index}>
-                            {(provided) => (
-                                <Task key={task.id}
-                                task={task}
-                                labels={labels}
-                                coloredDivStyle={coloredDivStyle}
-                                handleSaveTask={handleSaveTask}
-                                handleRemoveTask={handleRemoveTask}
-                                provided={provided}/>
-                            )}
-                        </Draggable>
+                        {group.tasks.map((task, index) => (
+                            <Draggable key={task.id} draggableId={task.id} index={index}>
+                                {(provided) => (
+                                    <Task key={task.id}
+                                        task={task}
+                                        labels={labels}
+                                        coloredDivStyle={coloredDivStyle}
+                                        handleSaveTask={handleSaveTask}
+                                        handleRemoveTask={handleRemoveTask}
+                                        provided={provided} />
+                                )}
+                            </Draggable>
                         ))}
                         {provided.placeholder}
                         <NewTask handleSaveTask={handleSaveTask} coloredDivStyle={coloredDivStyle} />

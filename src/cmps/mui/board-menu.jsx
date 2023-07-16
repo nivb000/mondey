@@ -10,14 +10,20 @@ import { FiEdit2 } from 'react-icons/fi'
 import { Divider } from '@mui/material'
 import { BsThreeDots } from 'react-icons/bs'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { NotificationModal } from './notification-modal'
 
-export const BoardMenu = ({ boardId }) => {
+export const BoardMenu = ({ boardId, handleBoardFav, isFavorite }) => {
 
     const dispatch = useDispatch()
     const [anchorEl, setAnchorEl] = useState(null)
+    const [msg, setMsg] = useState('')
+    const [notificationIsOpen, setNotificationIsOpen] = useState(false)
     const open = Boolean(anchorEl)
+    const navigate = useNavigate()
 
     const handleClick = (event) => {
+        event.preventDefault()
         setAnchorEl(event.currentTarget)
     }
     const handleClose = () => {
@@ -26,7 +32,10 @@ export const BoardMenu = ({ boardId }) => {
 
     const handleDeleteBoard = () => {
         dispatch(removeBoard(boardId))
+        setMsg(`Board ${boardId} Deleted Successfully`)
+        setNotificationIsOpen(true)
         handleClose()
+        navigate("/board")
     }
 
     return <div>
@@ -39,11 +48,14 @@ export const BoardMenu = ({ boardId }) => {
             MenuListProps={{
                 'aria-labelledby': 'basic-button',
             }}>
-            <MenuItem onClick={handleClose}>
+            <MenuItem onClick={() => handleBoardFav(boardId)}>
                 <ListItemIcon>
                     <CiStar />
                 </ListItemIcon>
-                <ListItemText>Add to favorites</ListItemText>
+                {isFavorite ?
+                <ListItemText>Remove from favorites</ListItemText>
+                :
+                <ListItemText>Add to favorites</ListItemText>}
             </MenuItem>
             <MenuItem onClick={handleClose}>
                 <ListItemIcon>
@@ -59,5 +71,6 @@ export const BoardMenu = ({ boardId }) => {
                 <ListItemText>Delete</ListItemText>
             </MenuItem>
         </Menu>
+        <NotificationModal msg={msg} severity="success" open={notificationIsOpen} setOpen={setNotificationIsOpen} />
     </div>
 }
