@@ -1,5 +1,3 @@
-import { groupService } from '../../services/group.service'
-
 export function setSelectedBoardGroups(groups) {
     return (dispatch) => dispatch({ type: 'SET_SELECTED_GROUPS', groups })
 }

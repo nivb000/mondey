@@ -34,8 +34,6 @@ export function removeBoard(boardId) {
             .then(() => dispatch({ type: 'REMOVE_BOARD', boardId }))
     }
 }
-export function setQueryFilter(filter) {
-    return (dispatch) => {
-        dispatch({ type: 'SET_FILTER', filter })
-    }
+export function handleSocket(board) {
+    return (dispatch) => dispatch({ type: 'SOCKET_HANDLER', board })
 }

@@ -1,14 +1,13 @@
 import logo from '../assets/imgs/mondey_logo_login.png'
 import { BsArrowRight } from 'react-icons/bs'
-import { useEffect, useState } from 'react'
-import { GoogleSignIn } from '../cmps/google-sign-in'
-import { loginUser } from '../store/actions/user.action'
+import { useState, useEffect } from 'react'
+import { signupUser } from '../store/actions/user.action'
 import { useDispatch, useSelector } from 'react-redux'
 import { NotificationModal } from '../cmps/mui/notification-modal'
 import { Link, useNavigate } from 'react-router-dom'
 
-export const LoginPage = () => {
-
+export const SignUpPage = () => {
+  
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const user = useSelector(state => state.userModule.user)
@@ -16,21 +15,21 @@ export const LoginPage = () => {
   const [open, setOpen] = useState(false)
   const [creds, setCreds] = useState({
     email: '',
-    password: ''
+    password: '',
+    fullname: '',
+    imgUrl: '',
+    isGoogleUser: false
   })
 
   useEffect(() => {
-    if (error) {
-      setOpen(true)
-    }
-    if (user) {
-      navigate("/board")
-    }
-  }, [error, user])
+    navigate("/board")
+  }, [user])
+  
+  
 
   const handleOnSubmit = (ev) => {
     ev.preventDefault()
-    dispatch(loginUser(creds, setError))
+    dispatch(signupUser(creds, setError))
   }
 
   const handleChange = ({ target }) => {
@@ -41,7 +40,7 @@ export const LoginPage = () => {
 
 
 
-  return <section className="flex col login-page">
+  return <section className="flex col signup-page">
     <header>
       <Link to="/">
         <img src={logo} alt="mondey-logo" />
@@ -50,26 +49,29 @@ export const LoginPage = () => {
     {open && <NotificationModal msg={error?.msg} severity={error?.type} open={open} setOpen={setOpen} />}
     <div className="flex justify-center login-section">
       <div className='flex col space-between align-center login-form'>
-        <h1>Log In</h1>
+        <h1>Sign up</h1>
         <form className='flex col space-evenly' onSubmit={handleOnSubmit}>
           <div className='flex space-between align-center input-form'>
             <label htmlFor='email'>Email</label>
-            <input type="text" name='email' id='email' autoComplete='off' placeholder='Email' onChange={handleChange} />
+            <input type="text" name='email' id='email' autoComplete='off' onChange={handleChange} />
+          </div>
+          <div className='flex space-between align-center input-form'>
+            <label htmlFor='fullname'>Full Name</label>
+            <input type="text" name='fullname' id='fullname' autoComplete='off' onChange={handleChange} />
+          </div>
+          <div className='flex space-between align-center input-form'>
+            <label htmlFor='imgUrl'>Image url</label>
+            <input type="text" name='imgUrl' id='imgUrl' autoComplete='off' onChange={handleChange} />
           </div>
           <div className='flex space-between align-center input-form'>
             <label htmlFor='password'>Password</label>
-            <input type="password" name='password' id='password' placeholder='Password' onChange={handleChange} />
+            <input type="password" name='password' id='password' onChange={handleChange} />
           </div>
-          <Link to="/signup">
-            <span>Not have an account yet? Sign up</span>
-          </Link>
           <button className='flex justify-center align-center'>
-            Log in
+            Sign up
             <BsArrowRight />
           </button>
         </form>
-        <div>Or Sign in with</div>
-        <GoogleSignIn />
       </div>
 
     </div>

@@ -1,7 +1,6 @@
 const INITIAL_STATE = {
     boards: null,
     selectedBoard: null,
-    filter: null
 }
 
 
@@ -39,11 +38,8 @@ export function boardReducer(state = INITIAL_STATE, action) {
                 ...state,
                 boards: state.boards.map(board => board.id === action.board.id ? action.board : board)
             }
-        case 'SET_FILTER':
-            return {
-                ...state,
-                filter: {...action.filter}
-            }
+        case 'SOCKET_HANDLER':
+            return {...state, selectedBoard: action.board}
         default:
             return state
     }

@@ -11,10 +11,12 @@ export const boardService = {
 const KEY = 'board'
 
 async function query(userId) {
-    const boards = await httpService.get(KEY, {userId})
+    let boards = []
+    boards = await httpService.get(KEY, {userId})
     if (!boards || !boards.length) {
         let board = createBoard()
-        return await httpService.post(KEY, board)
+        board = await httpService.post(KEY, board)
+        boards.push(board)
     }
     return boards
 }
