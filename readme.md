@@ -2,16 +2,17 @@
 <h4>Fully responsive full stack app</h4>
 
 <p align="left">Mondey is a customizable web and mobile work management platform, designed to help teams and organizations with operational efficiency by tracking projects and workflows, visualizing data, and team collaboration.</p>
-<p>App is live <a href="https://mondey.onrender.com/#/">here</a></p>
+<p>App is live <a href="https://mondey.up.railway.app/">here</a></p>
 <p>App Backend <a href="https://github.com/nivb000/mondey-backend">here</a></p>
 
 <h3>App features</h3>
 <ul>
-  <li>Full management platform</li>
-  <li>Fast saving changes</li>
+  <li>Full Projects management platform</li>
+  <li>quick saving feature</li>
   <li>Login system with cookie saving, JWT, Google Login</li>
-  <li>Drag and Drop</li>
+  <li>Tasks Drag and Drop</li>
   <li>Smart searching system with debounce hook</li>
+  <li>Web sockets for live updates without refresh</li>
 </ul>
   
 
