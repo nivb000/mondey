@@ -22,7 +22,9 @@ export const SignUpPage = () => {
   })
 
   useEffect(() => {
-    navigate("/board")
+    if(user){
+      navigate("/board")
+    }
   }, [user])
   
   
@@ -53,19 +55,19 @@ export const SignUpPage = () => {
         <form className='flex col space-evenly' onSubmit={handleOnSubmit}>
           <div className='flex space-between align-center input-form'>
             <label htmlFor='email'>Email</label>
-            <input type="text" name='email' id='email' autoComplete='off' onChange={handleChange} />
+            <input required type="text" name='email' id='email' autoComplete='off' onChange={handleChange} />
           </div>
           <div className='flex space-between align-center input-form'>
             <label htmlFor='fullname'>Full Name</label>
-            <input type="text" name='fullname' id='fullname' autoComplete='off' onChange={handleChange} />
+            <input required type="text" name='fullname' id='fullname' autoComplete='off' onChange={handleChange} />
           </div>
           <div className='flex space-between align-center input-form'>
             <label htmlFor='imgUrl'>Image url</label>
-            <input type="text" name='imgUrl' id='imgUrl' autoComplete='off' onChange={handleChange} />
+            <input required type="text" name='imgUrl' id='imgUrl' autoComplete='off' onChange={handleChange} />
           </div>
           <div className='flex space-between align-center input-form'>
             <label htmlFor='password'>Password</label>
-            <input type="password" name='password' id='password' onChange={handleChange} />
+            <input required type="password" name='password' id='password' onChange={handleChange} />
           </div>
           <button className='flex justify-center align-center'>
             Sign up

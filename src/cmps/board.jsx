@@ -32,6 +32,7 @@ export const Board = () => {
     if (!isLoading) {
       try {
         dispatch(loadSelectedBoard(boardId))
+        socketService.setSocketRoom(boardId)
       } catch (error) {
         console.log('err', error)
       } finally {

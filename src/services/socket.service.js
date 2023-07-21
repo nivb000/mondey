@@ -5,13 +5,13 @@ export const SOCKET_EVENT_BOARD_UPDATED = 'board-updated'
 export const SOCKET_EVEVT_UPDATE_BOARD = 'update-board'
 
 const SOCKET_EMIT_LOGIN = 'set-user-socket'
+const SOCKET_JOIN_ROOM = 'set-socket-room'
 const SOCKET_EMIT_LOGOUT = 'unset-user-socket'
 
 
 const baseUrl = (process.env.NODE_ENV === 'production') ? '' : 'http://localhost:3030'
 export const socketService = createSocketService()
 socketService.setup()
-
 
 function createSocketService() {
     var socket = null
@@ -33,6 +33,9 @@ function createSocketService() {
         },
         emit(eventName, data) {
             socket.emit(eventName, data)
+        },
+        setSocketRoom(data) {
+            socket.emit(SOCKET_JOIN_ROOM, data)
         },
         login(userId) {
             socket.emit(SOCKET_EMIT_LOGIN, userId)
