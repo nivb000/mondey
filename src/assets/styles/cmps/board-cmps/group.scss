@@ -39,8 +39,8 @@
                 .colored{border-top-left-radius: 10px;}
             }
             .header-item{min-width: 300px;}
-            .header-person{min-width: 180px;}
-            .header-status, .header-date{min-width: 132px;}
+            .header-person{min-width: 130px;}
+            .header-status, .header-date{min-width: 160px;}
         }
     }
 }
@@ -49,6 +49,7 @@
     height: 30px;
     background: white;
     border: 1px solid #c3c6d4;
+    color: $Black;
     border-radius: 5px;
     svg{
         width: 20px;

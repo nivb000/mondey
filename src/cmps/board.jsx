@@ -10,6 +10,7 @@ import { FcInvite } from 'react-icons/fc'
 import { IoChevronBack } from 'react-icons/io5'
 import { MembersModal } from "./board-cmps/members-modal"
 import { InfoModal } from "./board-cmps/info-modal"
+import { userService } from "../services/user.service"
 import { SOCKET_EVEVT_UPDATE_BOARD, SOCKET_EVENT_BOARD_UPDATED, socketService } from '../services/socket.service'
 
 
@@ -20,21 +21,21 @@ export const Board = () => {
 
   const { selectedBoard: board } = useSelector(state => state.boardModule)
   const { boardId } = params
-  const [openModal, setOpenModal] = useState(false)
+  const [openMembersModal, setOpenMembersModal] = useState(false)
   const [infoModal, setInfoModal] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const [boardUsers, setBoardUsers] = useState([])
 
-  const handleModalClose = () => setOpenModal(false)
+  const handleMembersModalClose = () => setOpenMembersModal(false)
   const handleInfoModalClose = () => setInfoModal(false)
 
   useEffect(() => {
-    setIsLoading(true)
-    if (!isLoading) {
+    if (isLoading) {
       try {
         dispatch(loadSelectedBoard(boardId))
         socketService.setSocketRoom(boardId)
-      } catch (error) {
-        console.log('err', error)
+      } catch (err) {
+        console.error('err on loading board', err)
       } finally {
         setIsLoading(false)
       }
@@ -42,7 +43,29 @@ export const Board = () => {
 
     return () => setIsLoading(false)
 
-  }, [boardId, isLoading])
+  }, [boardId])
+
+  useEffect(() => {
+    socketService.on(SOCKET_EVENT_BOARD_UPDATED, (updatedBoard) => {
+      dispatch(handleSocket(updatedBoard))
+    })
+
+    return () => socketService.off(SOCKET_EVENT_BOARD_UPDATED)
+  }, [])  
+
+  useEffect(() => {
+    if (board) {
+      document.title = board.title
+    }
+    return () => document.title = 'Mondey'
+  }, [board?.title])
+
+  useEffect(() => {
+    if(board){
+      getBoardUsers()
+    }
+  }, [boardId])
+  
 
   const handleTitleUpdate = ({ target }) => {
     const value = target.innerText
@@ -55,18 +78,10 @@ export const Board = () => {
     socketService.emit(SOCKET_EVEVT_UPDATE_BOARD, board)
   }
 
-  useEffect(() => {
-    socketService.on(SOCKET_EVENT_BOARD_UPDATED, (updatedBoard) => {
-      dispatch(handleSocket(updatedBoard))
-    })
-  }, [])
-
-  useEffect(() => {
-    if (board) {
-      document.title = board.title
-    }
-    return () => document.title = 'Mondey'
-  }, [board?.title])
+  const getBoardUsers = async () => {
+    const boardUsers = await userService.getBoardUsers(board.members)
+    setBoardUsers(boardUsers)
+}
 
   return <section className="board">
     <header className="flex space-between align-center top-section">
@@ -88,7 +103,7 @@ export const Board = () => {
         </svg>
       </div>
       <div className="flex align-center top-r">
-        <button className="flex align-center board-invite-btn" onClick={() => setOpenModal(true)}>
+        <button className="flex align-center board-invite-btn" onClick={() => setOpenMembersModal(true)}>
           <FcInvite />
           Invite / 1
         </button>
@@ -97,8 +112,9 @@ export const Board = () => {
 
     <MembersModal
       members={board?.members}
-      handleModalClose={handleModalClose}
-      openModal={openModal}
+      boardUsers={boardUsers}
+      handleModalClose={handleMembersModalClose}
+      openModal={openMembersModal}
       saveBoardChanges={saveBoardChanges} />
 
     {
@@ -112,6 +128,6 @@ export const Board = () => {
         open={infoModal} />
     }
 
-    <BoardTabs groupsTab={<GroupList labels={board?.labels} />} />
+    <BoardTabs groupsTab={<GroupList labels={board?.labels} boardUsers={boardUsers} />} />
   </section>
 }

@@ -9,7 +9,7 @@ import { taskService } from '../../services/task.service'
 import { updateSelectedBoardGroup } from '../../store/actions/group.action'
 import { useEffect } from 'react'
 
-export const GroupList = ({ labels }) => {
+export const GroupList = ({ labels, boardUsers }) => {
 
     const dispatch = useDispatch()
     const { selectedBoard: board } = useSelector(state => state.boardModule)
@@ -65,6 +65,7 @@ export const GroupList = ({ labels }) => {
                 {board?.groups?.map(group => <Group key={group.id}
                     group={group}
                     labels={labels}
+                    boardUsers={boardUsers}
                     saveGroupChanges={saveGroupChanges} />
                 )}
                 <NewGroup />

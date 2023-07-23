@@ -6,7 +6,7 @@ import { GroupOptions } from "../mui/group-options-menu"
 import { Droppable, Draggable } from "react-beautiful-dnd"
 import { taskService } from "../../services/task.service"
 
-export const Group = ({ group, labels, saveGroupChanges }) => {
+export const Group = ({ group, labels, boardUsers, saveGroupChanges }) => {
 
     const [anchorEl, setAnchorEl] = useState(null)
     const open = Boolean(anchorEl)
@@ -27,14 +27,14 @@ export const Group = ({ group, labels, saveGroupChanges }) => {
     const handleRemoveTask = async (taskId) => {
         const savedGroup = await taskService.remove(group, taskId)
         saveGroupChanges(savedGroup)
-    }    
+    }
 
     let coloredDivStyle = {
         width: '7px',
         height: '100%',
         backgroundColor: group.style.color,
     }
-    
+
     return (
         <Droppable key={group.id} droppableId={group.id} >
             {(provided) => (
@@ -76,6 +76,7 @@ export const Group = ({ group, labels, saveGroupChanges }) => {
                                     <Task key={task.id}
                                         task={task}
                                         labels={labels}
+                                        boardUsers={boardUsers}
                                         coloredDivStyle={coloredDivStyle}
                                         handleSaveTask={handleSaveTask}
                                         handleRemoveTask={handleRemoveTask}

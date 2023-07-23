@@ -18,20 +18,13 @@ const modalStyle = {
     padding: '24px 32px 8px 32px'
 }
 
-export const MembersModal = ({ members, handleModalClose, openModal, saveBoardChanges }) => {
+export const MembersModal = ({ members,boardUsers, handleModalClose, openModal, saveBoardChanges }) => {
 
     const [emailToSearch, setEmailToSearch] = useState('')
     const [usersFound, setUsersFound] = useState([])
-    const [boardUsers, setBoardUsers] = useState([])
     const debouncedSearchTerm = useDebounce(emailToSearch, 500)
     const [buttonText, setButtonText] = useState('Invite')
     const [buttonClassname, setButtonClassname] = useState('')
-
-    useEffect(() => {
-        if (members) {
-            getBoardUsers()
-        }
-    }, [members])
 
     useEffect(() => {
         const searchUsers = async () => {
@@ -56,11 +49,6 @@ export const MembersModal = ({ members, handleModalClose, openModal, saveBoardCh
             setButtonText('Invite')
             setEmailToSearch('')
         }, 3000)
-    }
-
-    const getBoardUsers = async () => {
-        const boardUsers = await userService.getBoardUsers(members)
-        setBoardUsers(boardUsers)
     }
 
     return <Modal
