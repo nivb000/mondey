@@ -2,39 +2,72 @@
     height: 48px;
     width: 100%;
     background-color: #eceff8;
-    padding-inline-end: 1rem;
-    padding-inline-start: 0.8rem;
     padding-block-start: 0.3rem;
-    .navbar-main{
+
+    .navbar-main {
         height: 100%;
-        .left-side{
-            .apps-svg{
+        padding: 0 1rem;
+
+        .left-side {
+            .apps-svg {
                 width: 20px;
                 height: 20px;
                 cursor: pointer;
             }
-            :nth-child(2){
+
+            :nth-child(2) {
                 margin-inline-end: 0.5rem;
-                margin-inline-start: 1.5rem;
+                margin-inline-start: 1rem;
             }
-            h4{
+
+            h4 {
                 font-family: 'bold';
-                span{font-family: 'regular';}
+
+                span {
+                    font-family: 'regular';
+                }
             }
         }
-        .right-side{
+
+        .right-side {
             width: 20%;
-            a{
+
+            a {
                 color: unset;
                 padding: 0.5rem;
-                svg{
+
+                svg {
                     width: 20px;
                     height: 20px;
                     transform: translateY(5px);
                 }
             }
+
+            .user-menu {
+                width: 60px;
+                background-color: $Light;
+                border-top-right-radius: 15px;
+                border-bottom-right-radius: 15px;
+                cursor: pointer;
+
+                img[alt~="logo"] {
+                    width: 25px;
+                }
+
+                img[alt~="user-pic"] {
+                    width: 30px;
+                    clip-path: circle();
+                }
+
+                &:hover {
+                    filter: brightness(80%);
+                }
+
+            }
         }
-        a:hover, .left-side .apps-svg:hover{
+
+        a:hover,
+        .left-side .apps-svg:hover {
             background-color: #dcdfec;
             border-radius: 5px;
         }

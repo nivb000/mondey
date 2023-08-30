@@ -16,7 +16,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ padding: '1rem 0' }}>
           <span>{children}</span>
         </Box>
       )}
@@ -57,7 +57,7 @@ export const BoardTabs = ({ groupsTab }) => {
         {groupsTab}
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        Stats coming soon...
       </TabPanel>
     </Box>
   );

@@ -5,6 +5,17 @@
 
     button {
         margin-inline-end: 1rem;
+        background-color: #0073ea;
+        color: white;
+        outline: transparent;
+        border: 0;
+        width: 100px;
+        border-radius: 3px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        &:hover{
+            filter: brightness(80%);
+        }
     }
 
     .search-container {

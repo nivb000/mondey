@@ -1,10 +1,10 @@
 import Paper from '@mui/material/Paper'
 import MenuList from '@mui/material/MenuList'
 
-export const Labels = ({ labels, handleUpdate }) => {
+export const Labels = ({ labels, handleUpdate, labelsRef }) => {
 
     return (
-        <Paper className='flex col space-around align-center label-list'>
+        <Paper className='flex col space-around align-center label-list' ref={labelsRef}>
             <MenuList>
                 {labels?.map((label, idx) => <div key={label.id}
                     className='flex align-center justify-center label'

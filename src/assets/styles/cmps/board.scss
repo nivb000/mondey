@@ -1,19 +1,19 @@
 .board{
     margin: 0 auto;
-    padding: 1.5rem 2.5rem;
+    padding: 1.3rem 1rem 1.5rem 2.3rem;
     width: 90%;
     border-top-left-radius: 15px;
     background-color: white;
     .top-section{
         width: 100%;
-        margin-block-end: 2rem;
+        margin-block-end: 1rem;
         .mobile-back-btn{
             display: none;
         }
         .top-l{
             width: 70%;
             h1{
-                font-size: 1.8rem;
+                font-size: 1.5rem;
                 padding: 0.3rem;
                 border: 1px solid transparent;
                 font-family: 'bold';

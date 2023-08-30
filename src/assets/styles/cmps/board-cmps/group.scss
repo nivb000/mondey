@@ -29,10 +29,17 @@
     }
     .group-container{
         .group-header{
-            width: 52%;
+            width: 100%;
+            color: #5a5a5a;
             height: 36px;
-            span{font-size: 0.9rem;}
-            .header-cell{border: 1px solid $BorderColor;}
+            border-top: 1px solid $BorderColor;
+            border-bottom: 1px solid $BorderColor;
+            border-top-left-radius: 10px;
+            span{font-size: 0.8rem;}
+            .header-cell{
+                border-right: 1px solid $BorderColor;
+                border-left: 1px solid $BorderColor;
+            }
             .header-checkbox{
                 border-top-left-radius: 10px;
                 input{margin: 0.5rem;}

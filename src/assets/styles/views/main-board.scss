@@ -3,11 +3,11 @@
     height: 100vh;
     .main-content{
         & > section:not(.work-navbar){
-            flex-basis: 83%;
+            flex-basis: 82%;
         }
         gap: 10px;
         .work-navbar{
-            flex-basis: 17%;
+            flex-basis: 18%;
         }
     }
 }

@@ -1,11 +1,11 @@
-import { useState } from "react"
+import { useState, useRef, useCallback } from "react"
 import { Labels } from "./labels"
 import { TaskMembers } from "./task-members";
 import DatePicker from "react-datepicker";
 import { IoIosResize } from 'react-icons/io'
 import { TaskMenu } from '../mui/task-menu'
-import "react-datepicker/dist/react-datepicker.css";
-
+import useOnClickOutside from '../../hooks/useOnClickOutside'
+import "react-datepicker/dist/react-datepicker.css"
 
 
 export const Task = ({ task, labels, boardUsers, coloredDivStyle, handleSaveTask, handleRemoveTask, provided }) => {
@@ -14,6 +14,18 @@ export const Task = ({ task, labels, boardUsers, coloredDivStyle, handleSaveTask
     const [membersIsOpen, setMembersIsOpen] = useState(false)
     const [taskDate, setTaskDate] = useState(new Date(task.date))
 
+    const labelsRef = useRef()
+    const membersRef = useRef()
+
+    const closeLabelsModal = useCallback(() => {
+        setLabelsIsOpen(false)
+    }, [])
+    const closeMembersModal = useCallback(() => {
+        setMembersIsOpen(false)
+    }, [])
+
+    useOnClickOutside(labelsRef, closeLabelsModal)
+    useOnClickOutside(membersRef, closeMembersModal)
 
     const handleUpdate = async ({ target }, value) => {
         const name = target.id
@@ -69,11 +81,11 @@ export const Task = ({ task, labels, boardUsers, coloredDivStyle, handleSaveTask
                 task.members.map(member => <img key={member.id} src={member.imgUrl} />) :
                 <img src="https://cdn.monday.com/icons/dapulse-person-column.svg" />
             }
-            {membersIsOpen && <TaskMembers members={boardUsers} handleUpdate={handleUpdate} />}
+            {membersIsOpen && <TaskMembers membersRef={membersRef} members={boardUsers} handleUpdate={handleUpdate} />}
         </div>
         <div className="flex justify-center align-center status-cell task-cell" style={{ backgroundColor: labels[task.statusLabel].color }} onClick={() => setLabelsIsOpen(prev => !prev)}>
             <span>{labels[task.statusLabel].title}</span>
-            {labelsIsOpen && <Labels labels={labels} handleUpdate={handleUpdate} />}
+            {labelsIsOpen && <Labels labelsRef={labelsRef} labels={labels} handleUpdate={handleUpdate} />}
         </div>
         <div className="flex justify-center align-center date-cell task-cell">
             <DatePicker

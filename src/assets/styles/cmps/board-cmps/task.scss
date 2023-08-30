@@ -84,16 +84,23 @@
 }
     
 .new-task{
+    border-bottom-left-radius: 10px;
     .colored, .task-cell{
+        border-bottom-left-radius: 10px;
         opacity: 0.6;
     }
     .item-cell input{
         width: 80%;
         height: 30px;
-        border: 0;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        padding-inline-start: 5px;
         outline: 0;
         &:focus{
             border: 1px solid blue;
+        }
+        &:hover{
+            border: 1px solid $BorderColor;
         }
     }
 }

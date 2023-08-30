@@ -32,6 +32,11 @@ export const createBoard = (title = "Board 1") => {
                 id: "l103",
                 title: "Done",
                 color: "#00c875"
+            },
+            {
+                id: "l104",
+                title: "",
+                color: "#c4c4c4"
             }
         ],
         groups: [

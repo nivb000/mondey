@@ -31,18 +31,18 @@
                 width: 70%;
                 height: 100%;
                 .input-form{
-                    label{color: #929292;}
+                    label{
+                        color: #929292;
+                        span{color: red;}
+                    }
                     input {
-                        width: 80%;
+                        width: 75%;
                         height: 40px;
                         padding: 6px 12px;
                         border-radius: 5px;
                         outline: 0;
                         border: 1px solid $BorderColor;
-
-                        &:focus {
-                            border: 1px solid #0073ea;
-                        }
+                        &:focus {border: 1px solid #0073ea;}
                     }
                 }
                 span {
