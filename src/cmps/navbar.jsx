@@ -26,7 +26,7 @@ export const NavBar = () => {
                 <Link to="/board/inbox"><BsInbox /></Link>
                 <Link to="/board/mywork"><BsCalendarCheck /></Link>
                 <Link to="/board/Favorites"><BsStar /></Link>
-                <UserMenu user={user} />
+                {user && <UserMenu user={user} />}
             </section>
         </section>
     </nav>
