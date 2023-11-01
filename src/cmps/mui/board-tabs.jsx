@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 import Box from '@mui/material/Box'
+import { BackOffice } from '../backoffice'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -37,7 +38,7 @@ function a11yProps(index) {
   };
 }
 
-export const BoardTabs = ({ groupsTab }) => {
+export const BoardTabs = ({ groupsTab, groups }) => {
 
   const [value, setValue] = useState(0)
 
@@ -57,7 +58,7 @@ export const BoardTabs = ({ groupsTab }) => {
         {groupsTab}
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Stats coming soon...
+        <BackOffice groups={groups} />
       </TabPanel>
     </Box>
   );

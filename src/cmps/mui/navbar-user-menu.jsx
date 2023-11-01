@@ -9,7 +9,7 @@ import { useState } from 'react'
 import logo from '../../assets/imgs/logo.png'
 
 export const UserMenu = ({ user }) => {
-
+    
     const dispatch = useDispatch()
     const [anchorEl, setAnchorEl] = useState(null)
     const open = Boolean(anchorEl)
@@ -29,7 +29,7 @@ export const UserMenu = ({ user }) => {
     return <section>
         <div className='flex space-between align-center user-menu' onClick={handleClick}>
             <img src={logo} alt="logo" />
-            <img src={user.imgUrl} alt="user-pic" />
+            <img src={user?.imgUrl} alt="user-pic" />
         </div>
         <Menu
             id="basic-menu"

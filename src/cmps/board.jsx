@@ -128,6 +128,6 @@ export const Board = () => {
         open={infoModal} />
     }
 
-    <BoardTabs groupsTab={<GroupList labels={board?.labels} boardUsers={boardUsers} />} />
+    <BoardTabs groupsTab={<GroupList labels={board?.labels} boardUsers={boardUsers} />} groups={board?.groups} />
   </section>
 }
