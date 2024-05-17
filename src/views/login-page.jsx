@@ -49,8 +49,8 @@ export const LoginPage = () => {
     </header>
     {open && <NotificationModal msg={error?.msg} severity={error?.type} open={open} setOpen={setOpen} />}
     <div className="flex justify-center login-section">
-      <div className='flex col space-between align-center login-form'>
-        <h1>Log In</h1>
+      <div className='flex col space-evenly align-center login-form'>
+        <h1>Log in to your account</h1>
         <form className='flex col space-evenly' onSubmit={handleOnSubmit}>
           <div className='flex space-between align-center input-form'>
             <label htmlFor='email'>Email</label>
