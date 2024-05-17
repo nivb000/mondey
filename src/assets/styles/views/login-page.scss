@@ -1,5 +1,6 @@
 .login-page {
     height: 100vh;
+
     header {
         position: relative;
         height: 65px;
@@ -22,6 +23,7 @@
 
         .login-form {
             width: 600px;
+
             h1 {
                 font-size: 2.5rem;
                 font-weight: 200;
@@ -29,9 +31,13 @@
 
             form {
                 width: 70%;
-                height: 50%;
-                .input-form{
-                    label{color: #929292;}
+                height: 45%;
+
+                .input-form {
+                    label {
+                        color: #929292;
+                    }
+
                     input {
                         width: 80%;
                         height: 40px;
@@ -43,14 +49,6 @@
                         &:focus {
                             border: 1px solid #0073ea;
                         }
-                    }
-                }
-                span {
-                    color: #0073ea;
-                    font-size: 0.9rem;
-
-                    &:hover {
-                        cursor: pointer;
                     }
                 }
 
@@ -81,6 +79,7 @@
                 font-size: 0.9rem;
                 display: table;
                 white-space: nowrap;
+
                 &:before,
                 &:after {
                     border-top: 2px solid #c5c7d0;
@@ -97,6 +96,18 @@
 
                 &:after {
                     left: 1.5%;
+                }
+            }
+
+            .no-account {
+                color: #222;
+                font-size: 0.9rem;
+                a{
+                    color: #0073ea;
+    
+                    &:hover {
+                        cursor: pointer;
+                    }
                 }
             }
         }

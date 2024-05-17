@@ -60,9 +60,6 @@ export const LoginPage = () => {
             <label htmlFor='password'>Password</label>
             <input type="password" name='password' id='password' placeholder='Password' onChange={handleChange} />
           </div>
-          <Link to="/signup">
-            <span>Not have an account yet? Sign up</span>
-          </Link>
           <button className='flex justify-center align-center'>
             Log in
             <BsArrowRight />
@@ -70,6 +67,7 @@ export const LoginPage = () => {
         </form>
         <div>Or Sign in with</div>
         <GoogleSignIn />
+        <span className='no-account'>Don't have an account yet?? <Link to="/signup">Sign up</Link></span>
       </div>
 
     </div>
